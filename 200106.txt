@@ -1,0 +1,21 @@
+* Version Control
+repository = 코드 저장 폴더
+git = 코드의 변경사항을 추적하는 시스템
+commit = 변경 사항 기록 (프로젝트의 상황 창)
+branch = 나뭇가지. 원본인 마스터 브랜치를 복사하여 새로운 기능을 시험할 때 쓰는 복사본
+
+git을 관리하는 github
+1. github > private 유료
+2. bitbucket > private 무료
+
+github desktop
+git을 vsc에서 적용할 수 있게
+
+github 와 github desktop은 아이디를 통해 서로 연동이 가능
+
+push = 깃 밀어내기
+pull = 당겨오기
+
+HTML과 CSS
+
+모듈 1 완료.
