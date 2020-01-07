@@ -1,0 +1,50 @@
+* HTML
+웹에서 뭐가 무엇인지를 정의내려주는 시스템
+
+* HTML 태그
+<이름 속성="값">내용</이름>
+ex) <title>제목</title>
+<p>내용</p>
+<a href="https://google.com">구글을 가봐</a>
+이렇게 하면 구글로 가진다!
+<a href="https://google.com" target="_blank">구글을 가봐</a>
+이렇게 하면 새 창으로 구글이 열린다
+
+* <!DOCTYPE html>
+이 태그는 self-contained(혼자 스스로 열고 닫는 태그이므로 닫을 필요가 없다)이다.
+구글 크롬으로 하여금 이 문서가 html임을 인식시키는 태그, <html></html>로 열고 닫을 수 있다.
+
+* head와 body
+헤드는 정보를 제공할 뿐
+컨텐츠는 바디에 있다.
+
+* h# (#은 숫자, 1~6까지 가능)
+바디에서 제목을 정해준다.
+
+* 메타 태그(head용)
+<meta charset="utf-8"> = character encoding
+웹문서 전체의 글자 유형을 지정한다
+
+* 메타 네임 (head용)
+<meta name="description" content="검색 시 아래에 나오는 간단한 설명">
+<meta name="author" content="검색 시 작성자의 이름 표시">
+
+* 시맨틱 태그
+의미가 있는 태그들을 의미
+<section></section>
+<article></article>
+<header></header>
+
+* 논시맨틱 태그
+의미가 없는 태그들을 의미
+<div></div>
+<span></span>
+
+* id와 calss
+CSS에서 각 헤더들의 속성을 정해줄 때, 이들을 구분하기 위한 방법.
+<header id="headerNumberOne" class="defaultHeader"> id, class의 형태
+id는 여권 번호와 같은 고유 번호이므로 중복될 수 없다
+class는 고유한 속성을 가진 id들을 묶을 때 사용한다.
+고유한 속성을 가진 것에는 ID를 사용하고
+반복되는 속성을 가진 것에는 Class를 적용
+
