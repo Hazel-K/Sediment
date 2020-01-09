@@ -1,0 +1,17 @@
+* CSS의 두 가지 파트
+1. selector
+형태 : h1 {property-name:value;} <이 의미는 h1에 해당 property를 적용한다는 뜻>
+property를 html에 연결시킬 때 쓴다. 이 때 property의 적용 개수는 제한이 없다.
+
+2. property
+형태 : property-name:value;
+무조건 소문자, 공백 없이, 밸류 마지막에 세미콜론(;) 정확히
+
+* CSS와 html을 연결
+1. inline 방법
+형태 : <style></style> (헤드에)
+헤드에 스타일을 열고 닫는 방법. 이 경우 html 문서들에 같은 스타일을 적용할 때 일일이 적용해야 하는 불편함이 있다.
+
+2. external 외부 연결
+형태 : <link href="styles.css" rel="stylesheet">
+css파일을 새로 만들어 링크시키는 방법. 모든 html 문서 head에 링크되어야한다. 이 역시 마찬가지로 여러 문서에 링크시켜야 하지만, 통일되어야 하는 스타일 형식을 각 html에 일일이 적어줄 필요는 없다.
