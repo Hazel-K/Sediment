@@ -1,0 +1,11 @@
+* 웹 제작 시 유용한 것들
+[크롬 앱]Colorzilla : 웹 색상 따기
+[크롬 앱]Page ruler redux : 웹 사이즈 및 길이 따기
+[웹사이트]fontawesome.com/icons : 아이콘 무료 제공
+	ID: Hyojin4588@naver.com
+	PW: qweasd12!
+	로그인 해서 킷에 있는 스크립트 복사 후 헤드에 붙여넣기
+	필요한 아이콘 검색해서 바디에 붙이기
+	형태 | I.fas.fa-아이콘이름 fa-#x<아이콘의 크기>
+
+* 모든 폴더와 파일명은 무조건 소문자로 적어야 한다
