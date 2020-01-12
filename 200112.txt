@@ -1,0 +1,111 @@
+* CSS에서, 많은 Element는 박스 형태이다.
+이 박스들은 안쪽에서부터 content, padding, border, margin의 순으로 겹겹이 쌓인 형태를 지닌다.
+
+* CSS에서 박스 넣기
+형태 : .box+inside-box <단축키 필요>
+박스가 생성된다. 생성된 박스는 'background-color: 색상;'라는 형태로 색상을 줄 수 있다.
+혹은 'width, height:#pt 혹은 #%'와 같은 형태로 폭과 높이를 조절할 수도 있다.
+
+* CSS에서 박스에 패딩, 마진 주기
+padding과 margin은 사이즈 하나만 썼을 때 상하좌우 모두 적용이 된다.
+두 개를 썼을 경우 상하, 좌우 순으로 적용이 된다.
+네 개를 썼을 경우 상,우,하,좌 순으로 적용이 된다.
+padding-top, bottom, left, right, 와 같은 형식으로 상하좌우 하나만 줄 수도 있다.
+
+* CSS에서 경계선에 선 주기
+형태 : border:#px solid(실선), dashed(점선) red(점선색상); <스타일에서>
+
+* CSS의 블록
+블록은 박스의 크기와 관계 없이 다른 컨텐츠가 가로선상에 존재할 수 없고 무엇이든 밑으로 위치하게 된다.
+그러나 display: Inline-block; 이라고 설정하면 블록들이 가로선상에 배치가 된다.
+박스의 형태는 인라인블록, 혹은 블록 둘 중 하나가 되어야 한다.
+display: Inline; 은 property(CSS 설정 값)의 모든 값을 지운다.
+이는 인라인으로 설정된 블록을 텍스트로 변경하는 것으로, 텍스트는 오직 길이만 존재하므로 박스의 폭이 텍스트의 넓이, 높이와 맞춰지게 된다.
+
+* CSS의 포지션
+각 포지션을 선언하고 top, bottom, left, right를 통해 상하좌우 간격을 줄 수 있다.
+1. Static
+형태 : position:static <CSS에서>
+그 element를 거기 놓으면 거기 있을 것이다 라는 뜻. 위치가 고정된다.
+
+2. fixed
+형태 : position:fixed <CSS에서>
+오버랩 고정. 스크롤을 해도 해당 위치에 고정된 채로 표시된다.
+
+3. absolute
+형태 : position:absolute <CSS>
+fixed와 비슷한 형태이지만 html에서 해당 element와 관계 있는 element를 살펴보고 이에 상응해서 포지션이 결정된다.
+
+4. relative
+형태 : position:relative <CSS>
+absolute 값의 부모격을 설정. box1이 relative, box2가 absolute일 경우, box2의 위치는 box1의 위치에 따라 상대적으로 결정된다.
+
+* Flex
+박스를 Inline-block으로 설정하고 가로로 배치할 경우 경우, 박스를 margin을 통해 수동으로 조절해야 하는 번거로움이 있고 기기마다 다르게 출력된다는 단점이 있는데, 이러한 점을 flex로 조정할 수 있다. 부모 박스에만 적용할 것.
+플렉스를 지정한 father 박스에 종속된 child 박스들에게 한번에 명령할 수 있고, 종속된 child 속 element도 함께 움직여주기 때문에 유용하다.
+
+* flex 컨테이너에서 가운데 정렬
+형태 : justify-content: center; <박스> 가로 정렬
+	align-items: center; <아이템> 세로 정렬
+예를 들어, align-item:flex-end
+justify-content:space-between
+라고 선언하면 같은 간격으로 중간 정렬이 된다.
+justify-content:space-around
+라고 하면 컨텐츠 뿐만 아니라 주변도 같은 간격으로 정렬이 된다.
+flex-direction: colomn <row는 디폴트값이므로 굳이 정할 필요 없음>
+을 통해 박스의 수평 수직을 변경할 수 있다. 이 경우 aling-items는 가로 정렬이 되고 justify-content는 세로 정렬이 된다.
+
+* no-wrap과 wrap의 차이점
+no wrap이 디폴트값, 폭을 무시하고 다 줄어든다. wrap은 화면을 줄여도 폭은 유지해준다.
+
+* pseudo-selector
+형태 : input[type="submit"]{스타일 주고 싶은 것들}
+셀렉터이지만 element가 없는 것
+
+* 가상 셀렉터를 이용하여 마지막 박스에만 색깔 변경
+형태 : .box: last-child{스타일 지정}
+혹은 first-child, 혹은 nth-child(숫자, 수식 등)으로 박스를 지정하여 스타일을 줄 수 있다.
+수식 예제 2n = 두번째 박스 2n+1 = 처음, 첫 줄에서 두 번째 박스만
+
+* input + .box{}
+가상셀렉터와 박스가 형제라는 의미. 스타일을 지정하면 .box의 직계 관계들에게 해당 스타일이 적용된다.
+
+* 박스의 움직임 변화
+1. active
+형태 : .box:active{스타일 지정}
+마우스를 클릭하면 해당 스타일로 변경
+
+2. hover
+형태 : .box:hover{스타일 지정}
+마우스를 올리면 해당 스타일로 변경
+
+3. focus
+형태 : .box:focus{스타일 지정}
+입력 바가 생기면 해당 스타일로 변경
+
+4. visited
+
+module 3 완료
+
+
+* 트랜지션
+형태 : transition:background-color 5s ease-in-out; <배경색에 적용, 5초 동안 스르르 사라지는 효과>
+혹은 transition:all <모두 적용,>
+고급형 CSS, 액티브, 클릭 효과 active, hover, focus에서 효과적으로 적용
+
+
+* 애니메이션
+형태 : @keyframes 지정할애니메이션이름 {} form{transform:none;} to{transform: rotate(1turn) scale(.5, .5);}
+from~to를 사용하는 대신 0%{},50%{},100%{}을 사용할 수도 있다.
+만든 이후 해당 애니메이션 이들어갈 박스 속에 animation: 1.5s 애니메이션이름 infinite ease-in-out;
+고급형 CSS, 특별한 조건 없이도 트랜지션, 트랜스포메이션 효과를 주고 싶을 때 사용
+
+*트랜스포메이션
+형태 : transform: rotate(20deg); <20도 기울이기>
+혹은 transform: rotate(1turn), transform: scale(.5, .5)
+고급형 CSS, 늘이거나 줄이거나 하는 것
+여타 기능들 참조 : https://developer.mozilla.org/en-us/docs/web/CSS/transform
+
+*미디어 쿼리
+형태 : @media screen and (min-width:320px) and (max-width:640px){}
+브라우저 크기에 자동으로 반응하는 반응형 크기에 따라 제시된 화면 출력
