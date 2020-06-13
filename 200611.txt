@@ -1,0 +1,57 @@
+// 객체지향 언어?
+// 기능들을 독립된 개체로 나누어 개발, 서로 데이터를 주고받으며 연산처리
+
+// 절차지향 언어?
+// 순서대로 코딩, 간편하고 속도 빠름, 수정 시 모든 것들을 다 고쳐야하기 때문에 불편
+
+// JRE (JAVA Runtime Environment)
+// 자바 실행 환경
+
+// JDK (JAVA Development Kit)
+// 자바 개발 기구
+
+
+// SPA (ReactJS, VueJS) Ajax, Restful 통신
+
+// Native
+// - android : JAVA, Kotlin
+// - iOS : Objective-C, Swift
+
+// React-Native (Javascript + JSX)
+// - Flutter (Dart)
+
+// Hybrid
+// - HTML, CSS
+// - JavaScript
+
+// WepApp
+// - HTML, CSS
+// - JavaScript
+
+Eclips 초기 설정
+Window.Preferences - Filter에 'enc'입력
+Content Types - Default encoding을 UTF-8입력 후 업데이트
+workspace - encoding을 UTF-8 로 설정 (workspace 폴더 변경할 때마다 설정)
+
+Java 패키지 이름 설정
+전 세계에 유일해야 함.
+구분하기 위해 길게 설정 ex) com.naver.projectname.object.java
+패키지명에 대문자가 들어가서는 안된다.
+
+Java 클래스 이름 설정
+class는 객체(instance)를 만드는 틀을 의미
+기능명을 이해하기 쉽게 설정
+띄어쓰기를 대문자로, 첫 시작은 무조건 대문자로
+
+Java 메인 메소드(함수) 설정
+public static void main(String[] args){ } 메인 메소드 기본 형태. 항상 같은 형태로 제작
+
+Java 언어 이해
+첫글자 대문자면 class
+소괄호 없으면 변수
+소괄호 있으면 method
+
+[Java COMMAND]
+System.out.println(""); 호출 메소드, 텍스트 출력 후 개행, syso 입력 후 Ctrl+Space로 단축 입력
+System.out.print(""); 호출 메소드, 텍스트 출력
+\n 이스케이프 문자, 개행
