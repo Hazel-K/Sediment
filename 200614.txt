@@ -1,0 +1,63 @@
+[LINUX COMMAND]
+apt-get update 설치할 수 있는 apt를 업데이트한다.
+apt-get install apt이름 설치할 수 있는 APT를 설치한다.
+
+[MYSQL COMMAND]
+select * from 테이블명 limit 표시개수; 위에서부터 표시개수까지만 표시
+select * from 테이블명 limit 시작점, 표시개수; 시작점에서부터 표시개수까지만 표시 첫번째 파라미터는 0부터 시작하므로 시작점을 4로 찍으면 5번째 데이터부터 표시
+create view 생성할뷰이름 as 서브쿼리문; 서브쿼리문을 기반으로 하는 하나의 가상 테이블(뷰)을 만든다.
+drop view 생성된뷰이름; 생성된 가상 테이블을 삭제한다.
+create user '생성할ID'@'%' identified by '생성할PASSWORD'; 유저용 아이디와 패스워드 생성
+grant all privileges on * to '생성한ID'@'%'; ID에게 모든 테이블 허용, *을 특정 테이블로 변경함으로써 특정 테이블에만 권한을 부여할 수 있음
+flush privileges; grant 테이블을 reload함으로서 변경사항을 즉시 반영하도록 한다.
+drop user '생성한ID'; 생성된 유저를 삭제한다. 관리자 권한에서 시행가능
+system clear; 지금까지 찍힌 로그들 다 지우기
+
+ex1)
+select month1 from maintable limit 1;
+select pname, local, month1 from maintable where month1 < (select month1 from maintable limit 1);
+select pname, local, month2 from maintable where month2 < (select month2 from maintable limit 3,1);
+
+[뷰]
+가상의 테이블을 의미, 두 개 이상의 테이블을 조인하거나 서브쿼리를 사용하는 경우 쿼리문이 길고 복잡해지는데, 만약 해당 쿼리문을 자주 사용해야 하는 경우 뷰라는 개념을 사용해서 간편한 쿼리로 바꿔줄 수 있다.
+뷰를 생성해서 호출하면 길고 복잡한 쿼리문을 실행한 결과와 동일하게 출력된다.
+
+ex2)
+create view abc as select pname, local, month2 from maintable where month2 < (select month2 from maintable limit 3,1);
+select * from abc;
+drop view abc;
+
+ex3)
+create user 'abc1234'@'%' identified by '1234';
+grant all privileges on * to 'abc1234'@'%';
+flush privileges;
+
+[칼리 리눅스]
+칼리 리눅스 검색 후 다운로드, 설치방법 검색해서 설치해보기, 웹핵 프로그램을 기본적으로 지원하기 때문에 많이 사용
+
+ex4)
+칼리 기본 아이디와 패스워드는 'kali'로 동일
+터미널 익스플로러에서 sudo passwd root 를 설정하여 관리자 비밀번호 설정,
+초기 본인 비밀번호(kali) 입력 후 비밀번호 변경
+root로 접속
+
+ex5)
+구글에서 finduser 찾아서 깃의 클립보드를 복사
+터미널에서 git clone 입력 후 우클릭해서 paste clipboard 입력
+cd finduser 로 디렉토리 변경
+chmod 777 ./finduser.sh 로 파인드유저 디렉토리에 권한 부여
+./finduser.sh 로 파인드유저 실행
+아이디 검색 후
+nano 파일.txt 입력 후 콘솔에서 아무 사이트를 실행하면 정보 확인 가능
+
+ex6)
+kage git 클론 생성
+curl -sL https://deb.nodesource.com/setup_10.x | sudo bash - 입력으로 apt 정보 받아오기
+apt install nodejs 입력하여 노드js 설치
+node -v
+npm -v 입력으로 노드js 설치됐는지 확인
+cd Kage
+npm install 입력으로 Kage에 npm을 설치
+apt-get install libgconf-2-4 입력하여 설치
+npm run dev 입력
+케이지 브라우저에 start server 클릭 후 서버 시작 후 커넥트 눌러서 접속

@@ -1,0 +1,26 @@
+﻿﻿1. 전체 제품 리스트를 출력해보세요
+select * from subtable;
+
+2. AV-809모델의 총 매출액이 얼마인지 계산해보세요
+select sum(month1 + month2 + month3 + month4 + month5 + month6 + month7 + month8 + month9 + month10 + month11 + month12) as total from maintable where pname = "AV-809";
+
+3. 전체 매출액에서 월별 매출액을 출력하여 비교할 수 있도록 만들어 보세요
+select sum(month1 + month2 + month3 + month4 + month5 + month6 + month7 + month8 + month9 + month10 + month11 + month12) as total, sum(month1) as month1, sum(month2) as month2, sum(month3) as month3, sum(month4) as month4, sum(month5) as month5, sum(month6) as month6, sum(month7) as month7, sum(month8) as month8, sum(month9) as month9, sum(month10) as month10, sum(month11) as month11, sum(month12) as month12 from maintable;
+
+4. sampletable1,2 모두 사용 //
+CZ-927 모델의 12월 매출의 합, 재고수량의 합을 구해보세요
+
+5. 지역별 재고수량의 합을 구해보세요
+select sum(stock) as 서울 from subtable where local = "서울";
+select sum(stock) as 부산 from subtable where local = "부산";
+select sum(stock) as 대전 from subtable where local = "대전";
+
+6. 재고수량이 100개 이하인 제품의 물품명 및 재고수량을 출력
+select pname, stock from subtable where stock <= 100;
+
+7. 위의 출력문에 조건에 100이라는 숫자 대신 select p_amount from sampletable2 where p_name="BH-902" and jijum="부산";
+를 넣어서 이중 쿼리문을 만들고 해당 쿼리문이 길이가 길기 때문에 view를 생성해서 출력해보세요
+select pname, stock from subtable where stock <= (select p_amount from sampletable2 where p_name="BH-902" and jijum="부산");
+create view aaa as select pname, stock from subtable where stock <= (select p_amount from sampletable2 where p_name="BH-902" and jijum="부산");
+select * from aaa;
+drop view aaa;
