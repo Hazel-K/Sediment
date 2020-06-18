@@ -1,0 +1,1 @@
+데이터베이스 구성 파일은 C:\app\Administrator에 설치되었으며 설치 시 선택한 다른 구성 요소는 C:\app\Administrator\product\11.2.0\dbhome_1에 설치되었습니다. 실수로 이들 구성 파일을 삭제하지 않도록 주의하십시오.

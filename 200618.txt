@@ -1,0 +1,36 @@
+[ORACLE COMMAND]
+[SQL PLUS에서]
+alter user hr account unlock; 유저 목록 잠금 해제, hr : 학습용
+alter user hr identified by koreait2020; 'koreait2020'으로 유저 변경
+select username, account_status from dba_users; db 계정 상태 확인
+
+DML
+insert, select, update, delete
+
+DDL
+create, alter, drop
+
+DCL
+
+insert into customer (
+    customerid, name, mail, zipcode, address, telephone
+) values (
+    'aaaa1', '홍길동', 'dddd@daum.net', '234-555', '대구시 달서구 용산동 222', '010-0000-1234'
+);
+
+create table Customer (
+    CustomerID VARCHAR(20) primary key,
+    Name varchar(30),
+    Mail varchar(50),
+    ZipCode varchar(20),
+    Address varchar(200),
+    Telephone varchar(20)
+);
+
+create table T_Order (
+    OrderID varchar(20) primary key,
+    CustomerID varchar(20),
+    OrderDate Date,
+    TotalPrice INT,
+    foreign key(CustomerID) references Customer (CustomerID)
+);
