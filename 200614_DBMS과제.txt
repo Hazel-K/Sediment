@@ -14,6 +14,7 @@ CZ-927 모델의 12월 매출의 합, 재고수량의 합을 구해보세요
 select sum(stock) as 서울 from subtable where local = "서울";
 select sum(stock) as 부산 from subtable where local = "부산";
 select sum(stock) as 대전 from subtable where local = "대전";
+select local, sum(stock) as 합계 from subtable group by local; // 위 세 쿼리문을 한 줄로 요약 가능
 
 6. 재고수량이 100개 이하인 제품의 물품명 및 재고수량을 출력
 select pname, stock from subtable where stock <= 100;
