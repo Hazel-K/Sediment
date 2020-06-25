@@ -1,0 +1,64 @@
+<TEXT 관련 태그>
+<h1></h1> 제목 태그, 6까지 있음, 번호가 뒤로 갈수록 크기가 작아진다.
+<p></p> 단락 태그, 일반적인 텍스트 입력시 사용되는 태그. 안 써도 무방.
+<br> 개행 태그, 닫는 태그가 없음.
+<hr> 수평선 태그, 닫는 태그가 없음.
+<blockquote cite="인용된 사이트 주소 표시"></blockquote> 인용문 태그
+<pre></pre> 화면에 입력한 그대로 글을 표시해주는 태그.
+<strong></strong> 텍스트 굵게 표시. 중첩 가능
+<b></b> 텍스트 굵게 표시. 중첩 가능
+<em></em> 이텔릭체로 강조 표시
+<i></i> 이텔릭체로 약하게 표시
+<q></q> blockquote 태그와 기능이 같음
+<mark></mark> 형광펜 효과
+<ruby></ruby> 동아시아 문자 특수표시 시 사용
+<rt></rt> ruby태그 내에서 주석을 달 때 사용
+<abbr title="짓고 싶은 이름"></abbr> 약자 표시 태그.
+<cite></cite> 참고 표시 태그
+<code></code> 코드 표시 태그
+<kbd></kbd> 키보드/음성 입력 태그
+<small></small> 작게 표시
+<sub></sub> 아래 첨자
+<sup></sup> 위 첨자
+<s> 취소선
+<u> 밑줄
+
+
+<LIST 목록 태그>
+<ol type="1, A, a, I, i" reversed="역순으로 시작하고 싶으면" start="시작하고 싶은 숫자 혹은 알파벳"></ol> 순서 있는 목록 생성 태그
+<ul type="circle, square"></ul> 순서 없는 목록 생성 태그
+<li></li> 목록 내 항목 기록 태그, 개수 만큼 앞에 숫자 혹은 기호 표시가 된다
+<table aria-describedby="summary" 낭독기를 위한 설명 제공></table> 이 공간이 테이블이라는 것을 알려주는 태그
+<tr></tr> 테이블의 세로 칸(열) 추가하는 태그
+<th colspan="가로 병합 개수" rowspan="세로 병합 개수"></th> 테이블의 가로 칸(행, 제목 형태) 추가하는 태그
+<td colspan="가로 병합 개수" rowspan="세로 병합 개수"></td> 테이블의 가로 칸(행, 내용 형태) 추가하는 태그
+<caption></caption> 테이블 제목 입력하는 태그
+<thead></thead> 표의 머리 부분 구간 지정 태그
+<tbody></tbody> 표의 몸통 부분 구간 지정 태그
+<tfoot></tfoot> 표의 꼬리 부분 구간 지정 태그
+<colgroup></colgroup> 세로 줄(행)을 묶어주는 태그
+<col> 세로 줄 만큼 생성하여 세로 줄 전체를 지정하는 태그
+
+
+<DEMENTION - NONSIMENTIC 태그>
+<div></div> 논시멘틱 태그. 기본적으로 블록 속성을 가짐
+<span></span> 논시멘틱 태그. 기본적으로 인라인 속성을 가짐
+<figure></figure> 구간 전체를 한 데 묶어주는 태그 <figurecaption></figurecaption> 태그를 통해 묶인 곳에 제목을 입력 가능
+<fieldset></fieldset> 여러 구역을 한 데 묶어주는 태그 <legend></legend> 태그를 통해 경계선을 뚫고 표시하는 제목을 입력 가능
+
+
+<DEMENTION - SIMENTIC 태그>
+<form method="get, post" action="실행할 프로그램" name="폼 id" target="창표시방식" autocomplete="on, off"></form>
+<label for="참조할 id"></label> 라벨 표시 태그, 참조할 id를 가진 다른 태그와 연결 가능
+<label><input type="radio, checkbox" name="짓고싶은 이름" value="해당값">내용</label> 라벨로 내용 영역까지 확장 가능
+<input type="text" width="너비" height="크기"> 텍스트 입력 창
+
+
+<LINK - 참조 태그>
+<img src="불러올 주소" alt="이미지 오류 시 출력" usemap="#mapname 맵생성 시 맵사용 가능"> 이미지 참조 태그
+<a href="불러올 링크" target="_blank, _parent, _top" download="다운받게 하고싶으면" rel="참조문서 관계표시" type="파일유형 표시" hreflang="링크 문서 언어"></a> 링크 참조 태그
+<iframe src="불러올 주소" frameborder="경계선" width="너비" height="높이"></iframe> 참조 태그를 공간으로 표시
+<script src="참조할 js파일 주소"> js 코드 사용 가능 </script> 스크립트 참조 태그
+<style></style> CSS 참조 태그
+<map name="맵이름"><area shape="circle 기본값은 네모" coords="좌표" href="불러올 링크" alt="오류 시"></map> 특정 공간을 좌표로 관리
+<svg 벡터 이미지 사용 시 Nodernizr 사이트에서 해당 기능을 사용할 수 있는 툴이 있는지 확인 요망>
