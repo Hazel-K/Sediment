@@ -79,7 +79,6 @@
     <track kind="종류" src="경로" srclang="언어" label="제목" default> 자막 태그
     
 <STYLE - 모양 옵션>
-    float: ; 해당 element를 원하는 위치에 정렬, 기준점은 부모 태그
     text-align: ; 해당 text를 원하는 가로 위치에 정렬, 기준점은 자기 자신
     vertical-align: ; 텍스트 세로 정렬
     list-style-type: ; 리스트 태그에서 리스트의 모양을 일괄 적용, 기준점은 자기 자신, url();를 통해 이미지 삽입 가능
@@ -95,6 +94,15 @@
     line-height: ; 줄 간격, 컨테이너에서 글자 세로 위치 조정할 때도 사용
     font-weight: ; 글자 굵기 설정
     background: ; 배경색 지정, rgb값으로 줄 경우 투명도 조절 가능
+    width: ; 너비
+    height: ; 높이
+    min-width: ; 최소 너비
+    min-height: ; 최소 높이
+    float: ; 해당 element를 원하는 위치에 정렬, 기준점은 부모 태그
+    clear: both | all ; float 속성 해제
+    position: static | absolute | relative | fixed ; 해당 공간의 포지션 요소 지시
+    left | right | top | bottom: ; position을 준 요소의 구체적인 위치 지시
+    z-index: ; 요소의 표시 순서 지시
     display: ; 공간 지정, inline, block, inline-block, block-inline, flex
     flex-direction: column | row | reverse-column | reverse-row ; 해당 flex 요소의 정렬 방향 지시
     justify-content: center | space-between | space-around ; flex 안쪽 요소의 가로축 정렬 방식 지시
@@ -107,10 +115,9 @@
     border-radius: 가로 크기 | 세로 크기 ;
     box-shadow: 수평 | 수직 | 흐림 | 번짐 | 색상 ; 공간 그림자
     box-sizing: content-box | border-box ; 박스 사이즈를 어디를 기준삼을지 결정
-    clear: both | all ; float 속성 해제
     transform: 줄 속성; 모양 변하게 하는 스타일 부여
     transform: translate(x, y), translateX(x), translateY(y), scale(x, y), scaleX(x), scaleY(y), ratate(n deg), skewX(x), skewY(y) 2차원 변형 옵션
-    transform: matrix(n [,n]), translate3d(x, y, z), translateZ(z), scale3d(x, y, z), scaleZ(z), rotate3d(x, y, z), rotateX(n deg), rotateY(n deg), rotateZ(n deg) 
+    transform: matrix(n [,n]), translate3d(x, y, z), translateZ(z), scale3d(x, y, z), scaleZ(z), rotate3d(x, y, z), rotateX(n deg), rotateY(n deg), rotateZ(n deg) 3차원 변형 옵션
     transition-property: all | element; 적용 범위 지정
     transition-duration: ; 지속 시간
     transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out; 속도 곡선 지정
