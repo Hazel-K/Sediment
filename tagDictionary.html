@@ -83,7 +83,7 @@
     word-spacing: ; 단어사이 공백 조절
     direction: ltr rtl; 좌에서 우, 우에서 좌 글자 방향 조정
     text-indent: ; 들여쓰기
-    text-shadow: ; 글자 그림자
+    text-shadow: 수평 | 수직 | 흐림 | 번짐 | 색상 ; 글자 그림자
     line-height: ; 줄 간격, 컨테이너에서 글자 세로 위치 조정할 때도 사용
     font-weight: ; 글자 굵기 설정
     background: ; 배경색 지정, rgb값으로 줄 경우 투명도 조절 가능
@@ -100,11 +100,11 @@
     vertical-align: ; 텍스트 세로 정렬
     transform: 줄 속성; 모양 변하게 하는 스타일 부여
     transform: translate(x, y), translateX(x), translateY(y), scale(x, y), scaleX(x), scaleY(y), ratate(n deg), skewX(x), skewY(y) 2차원 변형 옵션
-    transform: matrix(n [,n]), translate3d(x, y, z), translateZ(z), scale3d(x, y, z), scaleZ(z), rotate3d(x, y, z), rotateX(n deg), rotateY(n deg), rotateZ(n deg)
+    transform: matrix(n [,n]), translate3d(x, y, z), translateZ(z), scale3d(x, y, z), scaleZ(z), rotate3d(x, y, z), rotateX(n deg), rotateY(n deg), rotateZ(n deg) 
     transition-property: all | element; 적용 범위 지정
     transition-duration: ; 지속 시간
     transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out; 속도 곡선 지정
     transition-delay: ; 지연 시간
-    transition: property | duration | function | delay; 한 번에 설정
-    animation: animationName | duration | function | delay; 한 번에 설정
+    transition: property | duration | function | delay; 트랜지션 한 번에 설정
+    animation: animationName | duration | function | delay; 애니메이션 한 번에 설정
     @keyframes animationName { from {} to {} } 애니메이션 지정
