@@ -120,8 +120,13 @@
     transform: matrix(n [,n]), translate3d(x, y, z), translateZ(z), scale3d(x, y, z), scaleZ(z), rotate3d(x, y, z), rotateX(n deg), rotateY(n deg), rotateZ(n deg) 3차원 변형 옵션
     transition-property: all | element; 적용 범위 지정
     transition-duration: ; 지속 시간
-    transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out; 속도 곡선 지정
+    transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out ; 속도 곡선 지정
     transition-delay: ; 지연 시간
     transition: property | duration | function | delay; 트랜지션 한 번에 설정
+    animation-name: ; 애니메이션 이름 지정
+    animation-duration: ; 애니메이션 지속 시간 지정
+    animation-direction: normal | alternative ; 애니메이션 표시 속성 지정
+    animation-iteration-count: ; 애니메이션 반복 횟수 지정
+    animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out ; 애니메이션 속도 곡선 지정
     animation: animationName | duration | function | delay | count | direction ; 애니메이션 한 번에 설정
-    @keyframes animationName { from {} to {} } 애니메이션 지정
+    @keyframes animationName { from {} to {} } 애니메이션 스타일 지정
