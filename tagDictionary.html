@@ -138,20 +138,26 @@
     @keyframes animationName { from {} to {} } 애니메이션 스타일 지정
 
 <STYLE - 가상선택자>
-    element::first-letter: ; 문단의 첫글자에 스타일 적용
-    element::first-line: ; 문단의 첫줄에 스타일 적용
-    element:link: ; 방문하지 않은 링크
-    element:visited: ; 방문한 링크
-    element:hover: ; On Mouse 상태일 때의 element
-    element:active: ; On Click 상태일 때의 element
-    element:focus: ; 웹 요소에 초점이 맞춰졌을 때의 element
-    element:enabled: ; element가 사용 가능한 상태일 때
-    element:disabled: ; element가 사용 불가능한 상태일 때
-    element:checked: ; radio/checkbox 선택 시 element
-    element:root: ; 문서 전체에 적용
-    element:nth-child(n | odd | even): ; 해당 element의 정방향 n번째 요소
-    element:nth-last-child(n): ; 해당 element의 역방향 n번째 요소
-    element:first-child: ; 해당 element의 첫 번째 자식
-    element:last-child: ; 해당 element의 마지막 자식
-    element:first-of-type: ; 
-    
+    element::first-letter{} 문단의 첫글자에 스타일 적용
+    element::first-line{} 문단의 첫줄에 스타일 적용
+    element:link{} 방문하지 않은 링크
+    element:visited{} 방문한 링크
+    element:hover{} On Mouse 상태일 때의 element
+    element:active{} On Click 상태일 때의 element
+    element:focus{} 웹 요소에 초점이 맞춰졌을 때의 element
+    element:enabled{} element가 사용 가능한 상태일 때
+    element:disabled{} element가 사용 불가능한 상태일 때
+    element:checked{} radio/checkbox 선택 시 element
+    element:root{} 문서 전체에 적용
+    element:nth-child(n | odd | even){} 해당 element의 정방향 n번째 요소
+    element:nth-last-child(n){} 해당 element의 역방향 n번째 요소
+    element:first-child{} 해당 element의 첫 번째 자식
+    element:last-child{} 해당 element의 마지막 자식
+    element:first-of-type{} 해당 element의 첫 번째 element
+    element:last-of-type{} 해당 element의 마지막 element
+    element:only-child{} 해당 element의 유일한 자식
+    element:only-of-type{} 해당 element의 유일한 element
+    element:target{} href 앵커 목적지에 해당하는 element
+    element:not(condition){} condition에 해당하지 않는 모든 element
+    element::after | before{} 특정 element의 앞, 뒷부분에 스타일 적용
+    element[condition = ~= |= ^= $= *=]{} condition이 값에 일치할 때 해당 element에 스타일 부여
