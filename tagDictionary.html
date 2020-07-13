@@ -96,8 +96,6 @@
     text-shadow: 수평 | 수직 | 흐림 | 번짐 | 색상 ; 글자 그림자
     line-height: ; 줄 간격, 컨테이너에서 글자 세로 위치 조정할 때도 사용
     font-weight: ; 글자 굵기 설정
-    element::first-letter: ; 가상선택자, 문단의 첫글자에 스타일 적용
-    element::first-line: ; 가상선택자, 문단의 첫줄에 스타일 적용
     background: ; 배경색 지정, rgb값으로 줄 경우 투명도 조절 가능
     width: ; 너비
     height: ; 높이
@@ -138,3 +136,22 @@
     animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out ; 애니메이션 속도 곡선 지정
     animation: animationName | duration | function | delay | count | direction ; 애니메이션 한 번에 설정
     @keyframes animationName { from {} to {} } 애니메이션 스타일 지정
+
+<STYLE - 가상선택자>
+    element::first-letter: ; 문단의 첫글자에 스타일 적용
+    element::first-line: ; 문단의 첫줄에 스타일 적용
+    element:link: ; 방문하지 않은 링크
+    element:visited: ; 방문한 링크
+    element:hover: ; On Mouse 상태일 때의 element
+    element:active: ; On Click 상태일 때의 element
+    element:focus: ; 웹 요소에 초점이 맞춰졌을 때의 element
+    element:enabled: ; element가 사용 가능한 상태일 때
+    element:disabled: ; element가 사용 불가능한 상태일 때
+    element:checked: ; radio/checkbox 선택 시 element
+    element:root: ; 문서 전체에 적용
+    element:nth-child(n | odd | even): ; 해당 element의 정방향 n번째 요소
+    element:nth-last-child(n): ; 해당 element의 역방향 n번째 요소
+    element:first-child: ; 해당 element의 첫 번째 자식
+    element:last-child: ; 해당 element의 마지막 자식
+    element:first-of-type: ; 
+    
