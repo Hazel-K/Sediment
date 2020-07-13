@@ -137,6 +137,7 @@
     animation: animationName | duration | function | delay | count | direction ; 애니메이션 한 번에 설정
     @keyframes animationName { from {} to {} } 애니메이션 스타일 지정
 
+    
 <STYLE - 가상선택자>
     element::first-letter{} 문단의 첫글자에 스타일 적용
     element::first-line{} 문단의 첫줄에 스타일 적용
@@ -161,3 +162,10 @@
     element:not(condition){} condition에 해당하지 않는 모든 element
     element::after | before{} 특정 element의 앞, 뒷부분에 스타일 적용
     element[condition = ~= |= ^= $= *=]{} condition이 값에 일치할 때 해당 element에 스타일 부여
+
+    
+<STYLE - 직접선택자>
+    element element{} 하위 선택자, 지정한 모든 하위 요소에 스타일 적용
+    element>element{} 자식 선택자, 지정한 자식 요소에만 스타일 적용
+    element+element{} 인접 형제 선택자, 가장 가까운 형제 요소 하나에 스타일 적용
+    element~element{} 형제 선택자, 가장 가까운 형제 요소 모두에 스타일 적용
