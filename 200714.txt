@@ -1,0 +1,45 @@
+[ORACLE SQL DEVELOPER]
+
+09:43
+CREATE TABLE t_sutdent(
+	i_student number primary key,
+	nm varchar2(15) not null,
+	age number(3) not null
+);
+
+10:17
+Table T_STUDENT이(가) 생성되었습니다.
+
+10:24
+INSERT INTO t_student
+	(i_student, nm, age)
+VALUES
+	(4, '김시운', 22);
+
+UPDATE t_student SET nm='김도빈',  age=21 where i_student=2;
+
+10:34
+DELETE FROM t_student where i_student = 3;
+
+10:36
+SELECT * FROM t_student;
+
+11:14
+SELECT nm, age as student_age
+FROM t_student A
+WHERE i_student > 3
+ORDER BY i_student DESC, age;
+
+11:25
+SELECT 1+1 as dd result FROM dual;
+SELELCT 1 as dd, '하하' as nm, i_student FROM t_student;
+
+11:33
+SELECT i_sudent as student FROM t_student
+WHERE nm LIKE '%하%';
+
+11:35
+SELECT * FROM employees WHERE phone_number like '%423%';
+
+11:45
+SELECT * FROM employees WHERE phone_number like '%423.%';
