@@ -1,0 +1,23 @@
+[LINUX COMMAND]
+cd .. 이전파일로
+ls 파일 리스트 표시
+sudo passwd root 관리자 패스워드 설정
+su 관리자 권한 접근
+apt-get update 사용 가능한 apt 업데이트
+apt-get upgrade 사용 가능한 apt 업그레이드
+apt-get install mysql-server-5.7 MYSQL 서버 5.7 설치
+apt-get install mariadb-server-10.3 마리아DB 서버 10.3 설치
+mysql -u root -p MYSQL 유저를 관리자로, 패스워드를 사용하여 접근
+
+[MYSQL COMMAND]
+show databases; 데이터베이스들 표시
+create database name(엔터 이후 ; 입력) 데이터베이스 NAME 생성
+use name NAME 데이터베이스로 이동
+show tables; 데이터테이블 표시
+create table `sampledb`.`user` (`id` varchar(12), `pw` varchar(18)); 데이터베이스에 user테이블을 생성, 아이디 행은 12글자, pw 행은 18글자
+desc user; user테이블의 정보를 표시
+alter table `테이블명` add `추가할 필드명` 자료형; 기성 테이블에 새 필드를 추가
+insert into 테이블명 values('입력할 문자값',입력할 숫자값); 해당 테이블 안에 필드의 값을 각각 추가
+insert into 테이블명(필드1,필드2) values(값1, 값2); 해당 테이블 안 필드 1, 2에 값 1, 2를 삽입 (필드의 순서는 테이블 속 정의된 필드 순서와는 관계 없다.)
+select * from 테이블명; 해당 테이블의 데이터값을 조회 *은 모든 행
+create database 데이터베이스명 character set "utf8" collate "utf8_general_ci"; 한글 글자가 깨지지 않는 데이터베이스 제작

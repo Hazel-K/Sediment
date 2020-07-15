@@ -1,0 +1,19 @@
+[MYSQL COMMAND]
+alter table 테이블이름 alter column 필드이름 변경할데이터타입; 기성 필드의 데이터타입 변경
+select distinct (필드이름) from 테이블명; 해당필드에서 중복된 것 제거하고 표시
+select sum(필드1+필드2) from 테이블명 where 필드=속성값; 해당 속성과 일치하는 필드의 합을 표시
+update 테이블명 set 수정할필드명 = 필드값 where 조건; 해당 조건과 일치하는 필드의 값을 수정
+
+alias => as (해당 수식의 값의 별칭을 정하겠다)
+select sum(month1+month2) as total from maintable where pname="AV-809"; sum을 total로 정의 후 해당 조건에 맞는 필드의 합을 표시
+
+ex1) 합계 및 별칭 예제
+select sum(month1+month2+month3+month4+month5+month6+month7+month8+month9+month10+month11+month12) as monthtotal from maintable; 이렇게하면 전체 총 합이 다 나옴
+select sum(month1) as 1월, sum(month2) as 2월, sum(month3) as 3월, sum(month4) as 4월, sum(month5) as 5월, sum(month6) as 6월, sum(month7) as 7월, sum(month8) as 8월, sum(month9) as 9월, sum(month10) as 10월, sum(month11) as 11월, sum(month12) as 12월 from maintable; 이렇게 하면 월별 총합이 나옴
+
+ex2) 합계 및 별칭 예제
+select local, pname from subtable where stock < 100; 재고 물량 100개 미만인 제품을 가지고 있는 지역과 해당 물품명 출력
+
+ex3) 수정 프로세스
+select * from subtable where pname ="AI-725" and local = "서울"; 반드시 해당 조건을 select문으로 출력하여 수정할 데이터가 올바르게 출력되는지를 확인
+update subtable set stock = 100 where pname ="AI-725" and local = "서울"; SUBTABLE의 WHERE 조건에 맞는 STOCK 필드 값을 100으로 수정
