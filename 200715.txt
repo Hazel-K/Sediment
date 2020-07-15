@@ -1,0 +1,34 @@
+오전 9:27 2020-07-15
+rows[행]은 tuple
+columns[열]은 attribute
+전체 행렬은 schema
+
+오전 9:41 2020-07-15
+rollback; 필드에 트랜잭션 걸고 오류메시지 정리함과 동시에 롤백시키는 방법을 주로 사용함
+commit;
+
+오전 10:38 2020-07-15
+INSERT INTO t_sutdent (i_student, nm, age) SELECT 13, nm, age from t_student where i_student = 12;
+
+오전 10:42 2020-07-15
+insert into t_student select 12, '사공수기', 28 from dual;
+
+오전 11:32 2020-07-15
+UPDATE t_sutdent SET nm = select구절, age = select구절 where 조건문;
+
+오전 11:36 2020-07-15
+DELETE FROM t_student WHERE i_student BETWEEN 4 and 7;
+
+오전 11:38 2020-07-15
+SELECT * FROM t_student WHERE i_student IN (SELECT i_student FROM t_student WHERE i_student <= 4);
+SELECT * FROM t_student WHERE i_student IS NULL;
+
+오후 12:32 2020-07-15
+SELECT first_name, substr(first_name, 2, 3) FROM employees; 해당 필드의 문자열을 2번째 자리에서부터 3만큼 자른 문자열로 반환
+SELECT first_name, instr(first_name, 'a') FROM employees; 해당 필드의 해당 문자열이 몇번째 자리에 있는지 위치값을 정수로 반환
+
+오후 12:39 2020-07-15
+SELECT ltrim('      a      ') FROM dual;
+SELECT rtrim('      a      ') FROM dual;
+SELECT length('      a      ') FROM dual;
+SELECT concat('a',concat('b',concat('c', 'd'))) FROM dual;
