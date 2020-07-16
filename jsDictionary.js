@@ -13,10 +13,10 @@
 <FIELD SETTING>
     let or var = n; 변수 설정
     const = n; 상수 설정
-    function (args) {excutor;} 함수 설정의 기본 형태
+    function funcName(args) {excutor;} 함수 설정의 기본 형태
 
 <DATA TYPE>
     String: 문자형
     number: 숫자형, int|float
     boolean: 논리형, true|false
-    null: 빈 데이터, undefined
+    null: 빈 데이터, 주로 초기화하는 용도로 사용 undefined
