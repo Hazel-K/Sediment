@@ -1,0 +1,22 @@
+1. 톰캣 9.0버전
+이클립스 최신버전 다운
+
+2. 톰캣/이클립스 한 폴더에 압축풀기
+
+3. 톰캣 conf 폴더 server.xml 편집:
+<Connector port="8089" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" URIEncoding="UTF-8"/>
+    <!-- A "Connector" using the shared thread pool-->
+
+4. 오라클 db의 ojdbc6.jar 파일을 톰캣 lib폴더에 복사
+
+5. 이클립스 Preferences 설정에 encoding 검색해서 나오는 항목들 UTF-8로 업데이트
+
+6. 이클립스 [File] - [new] - [Dynamic Web Project] 생성
+
+7. 이클립스 웹프로젝트 우클릭 - [JAVA EE TOOLS] - [Generate Deployment Descriptor stub] 생성
+
+8. 웹프로젝트 - [web content] - 새 JSP 파일 생성
+
+9. [Server] - [Tomcat 9.0] - [Add-remove] 에서 만든 프로젝트 파일 add 후 finish
