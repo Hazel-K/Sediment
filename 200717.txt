@@ -1,0 +1,22 @@
+오전 11:15 2020-07-17
+SELECT max(salary), min(salary), avg(salary), count(*) FROM employees WHERE commission is null;
+
+오전 11:18 2020-07-17
+CEIL(); 올림
+FLOOR(); 내림
+ROUND(); 반올림
+TRUNC(요소, n); 소수점 자리수 n으로 지정, n안쓰면 정수만 반환
+NVL(); 널값 지정
+
+오전 11:40 2020-07-17
+SELECT job_id, decode(job_id, 'IT_PROG', '프로그래머',  'FI_ACCOUNT', '금융업', 'AD_VP', '에이디 브이피') FROM employees;
+
+오후 12:01 2020-07-17
+SELECT job_id FROM employees WHERE decode(job_id, 'IT_PROG', '프로그래머',  'FI_ACCOUNT', '금융업', 'AD_VP', '에이디 브이피') is not null;
+
+오후 12:19 2020-07-17
+SELECT CASE job_id WHEN 'IT_PROG' THEN '프로그래머' ELSE ' ' END FROM employees;
+SELECT CASE WHEN salary >= 10000 THEN salary * 2 else 3000 END FROM employees;
+
+오후 12:29 2020-07-17
+SELECT job_id, manager_id FROM employees GROUP BY job_id, manager_id HAVING count(*) >= 5 ORDER BY job_id, manager_id;
