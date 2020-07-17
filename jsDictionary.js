@@ -14,7 +14,7 @@
     document.querySelector("Selector"); 선택자를 통해 Element 지정 <return type: element>
     document.getElementById("id"); #id를 통해 Element 지정 <return type: element>
     document.getElementByClass("class"); .class를 통해 Element 지정 <return type: element>
-    document.write("text"); 원하는 text를 출력 <return type: void>
+    document.write("text"); 원하는 text를 출력, html문법 직접사용 가능 <return type: void>
 
 <FIELD SETTING>
     let or var = n; 변수 설정
