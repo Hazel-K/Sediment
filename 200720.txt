@@ -1,0 +1,40 @@
+오전 9:27 2020-07-20
+SELECT NVL(컬럼명, 'null일 시 주고싶은값') FROM dual;
+MYSQL이면 ifnull(컬럼명, 'null일 시 주고싶은값');
+MSSQL이면 isnull(컬럼명, 'null일 시 주고싶은값');
+
+오전 10:18 2020-07-20
+SELECT DISTINCT LPAD(phone_number, 3) FROM EMPLOYEES;
+SELECT LPAD(phone_number, 3) FROM EMPLOYEES;
+SELECT LPAD(phone_number, 3) as TEST, COUNT(*) FROM EMPLOYEES GROUP BY LPAD(phone_number, 3);
+
+오전 10:44 2020-07-20
+SELECT TO_CHAR(SYSDATE, 'yyyy-mm-dd-hh-m-ss') FROM DUAL;
+
+오후 12:05 2020-07-20
+SELECT B.employee_id, max(B.first_name), max(B.last_name), count(*) FROM employees A LEFT Join employees B ON A.manager_id = B.employee_id GROUP BY B.employee_id ORDER BY B.employee_id;
+
+오후 12:17 2020-07-20
+CREATE TABLE t_hobby(i_hobby NUMBER PRIMARY KEY, nm VARCHER2(30) NOT NULL);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (1, '독서');
+INSERT INTO t_hobby (i_hobby, nm) VALUES (2, '음악감상');
+INSERT INTO t_hobby (i_hobby, nm) VALUES (3, '영화감상');
+INSERT INTO t_hobby (i_hobby, nm) VALUES (4, '게임');
+INSERT INTO t_hobby (i_hobby, nm) VALUES (5, '산책');
+INSERT INTO t_hobby (i_hobby, nm) VALUES (6, '프로그래밍');
+commit;
+SELECT * FROM t_hobby;
+
+오후 12:30 2020-07-20
+CREATE TABLE t_tudent_hobby( i_student number, i_hobby number, r_dt DATE DEFAULT SYSDATE, PRIMARY KEY(i_student, i_hobby), FOREIGN KEY(i_student) REFERENCES t_student(i_student), FOREIGN KEY(i_hobby) REFERENCES t_hobby(i_hobby) );
+
+오후 12:42 2020-07-20
+CREATE TABLE t_tudent_hobby( i_student number, i_hobby number, r_dt DATE DEFAULT SYSDATE, PRIMARY KEY(i_student, i_hobby), FOREIGN KEY(i_student) REFERENCES t_student(i_student) ON DELETE CASCADE, FOREIGN KEY(i_hobby) REFERENCES t_hobby(i_hobby) );
+
+오후 12:51 2020-07-20
+INSERT INTO t_hobby (i_hobby, nm) VALUES (1, 2);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (1, 4);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (2, 1);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (3, 5);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (3, 3);
+INSERT INTO t_hobby (i_hobby, nm) VALUES (3, 1);
