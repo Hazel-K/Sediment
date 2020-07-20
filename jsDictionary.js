@@ -9,12 +9,16 @@
     boolean(); 비논리형을 논리형으로 변환하는 함수 <return type: boolean>
     parseInt(); 문자를 정수로 <return type: Number>
     parseFloat(); 문자를 실수로 <return type: Number>
+    location.reload(); 브라우저를 새로 고침
+    element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
 
 <DOCUMENT FUNCTION>
     document.querySelector("Selector"); 선택자를 통해 Element 지정 <return type: element>
     document.getElementById("id"); #id를 통해 Element 지정 <return type: element>
     document.getElementByClass("class"); .class를 통해 Element 지정 <return type: element>
     document.write("text"); 원하는 text를 출력, html문법 직접사용 가능 <return type: void>
+    document.innerText = ""; 원하는 text를 입력 <return type: String>
+    document.innerHTML = ""; 원하는 text를 입력, HTML 문법을 적용 <return type: String>
 
 <FIELD SETTING>
     let or var = n; 변수 설정
