@@ -1,0 +1,69 @@
+오전 9:21 2020-07-21
+SELECT * FROM t_student_hobby A INNER JOIN t_student B ON A.i_student = B.i_student;
+SELECT B.i_student, B.nm as studentnm, A.i_hobby, C.nm as hobby_name FROM t_student_hobby A INNER JOIN t_student B ON A.i_student = B.i_student; INNER JOIN t_hobby C ON A.i_hobby = C.i_hobby;
+
+오전 9:39 2020-07-21
+SELECT B.i_student, B.nm AS student_nm, A.i_hobby, C.nm AS hobby_nm FROM t_student_hobby A LEFT JOIN t_student B ON A.i_student = B.i_student LEFT JOIN t_hobby C ON A.i_hobby = C.i_hobby;
+
+오전 9:44 2020-07-21
+CREATE TABLE t_board(
+	i_board NUMBER PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	ctnt VARCHAR(2000) NOT NULL,
+	r_dt DATE DEFAULT SYSDATE,
+	i_student NUMBER NOT NULL,
+	FOREIGN KEY (i_student) REFERENCES t_student(i_student)
+);
+
+COMMENT ON COLUMN t_board.i_student IS '작성자';
+
+INSERT INTO t_board(i_board, title, ctnt, i_student) VALUES (1, '안녕','112211', 3);
+INSERT INTO t_board(i_board, title, ctnt, i_student) VALUES (2, '하세요','ㅋㅋㅋ', 3);
+INSERT INTO t_board(i_board, title, ctnt, i_student) VALUES (3, '하하','ㅇㅇㅇㅇ', 1);
+INSERT INTO t_board(i_board, title, ctnt, i_student) VALUES (4, '좋아요','ㅇㄹㅇㄹㅇㅋㅋㅋㅇㅇ', 2);
+INSERT INTO t_board(i_board, title, ctnt, i_student) VALUES (5, '크크','dfdfdffdf', 3);
+
+오전 10:00 2020-07-21
+CREATE TABLE t_board_like(
+	i_board NUMBER,
+	i_student NUMBER,
+	PRIMARY KEY (i_board, i_student),
+	FOREIGN KEY (i_board) REFERENCES t_board(i_board),
+	FOREIGN KEY (i_student) REFERENCES t_student(i_student)
+);
+
+오전 10:27 2020-07-21
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (1, 2);
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (1, 4);
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (2, 1);
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (3, 5);
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (3, 3);
+INSERT INTO t_student_hobby(i_student, i_hobby) VALUES (3, 1);
+
+오전 11:43 2020-07-21
+SELECT a.i_board, a.title, a.ctnt, B.nm FROM t_board A
+LEFT JOIN t_student B ON A.i_student = b.i_student;
+
+SELECT a.*, b.*, c.* FROM t_student_hobby A
+LEFT JOIN t_student b on a.i_student = b.i_student
+LEFT JOIN t_hobby c on a.i_hobby = c.i_hobby;
+
+오전 11:48 2020-07-21
+INSERT INTO t_board_like(i_board, i_student) VALUES(1, 1);
+INSERT INTO t_board_like(i_board, i_student) VALUES(1, 2);
+INSERT INTO t_board_like(i_board, i_student) VALUES(1, 3);
+INSERT INTO t_board_like(i_board, i_student) VALUES(2, 1);
+
+오전 11:50 2020-07-21
+SELECT i_board, COUNT(i_board) AS like_cnt
+FROM t_board_like
+GROUP BY i_board;
+
+오전 11:55 2020-07-21
+SELECT a.*, b.i_board, nvl(b.like_cnt, 0) FROM t_board a
+LEFT JOIN (
+    SELECT i_board, count(i_board) AS LIKE_CNT
+    FROM t_board_like
+    GROUP BY i_board
+) b
+ON a.i_board = b.i_board;
