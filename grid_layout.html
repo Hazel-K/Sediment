@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            border: 1px solid black;
+            width: 50%;
+            height: 100vh;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+        }
+        header {
+            background-color: green;
+            grid-area: 1 / 1 / 3 / 11;
+        }
+        section {
+            background-color: orange;
+            grid-area: 3 / 4 / 9 / 11;
+        }
+        aside {
+            background-color: orangered;
+            grid-area: 3 / 1 / 9 / 4;
+        }
+        footer {
+            background-color: gray;
+            grid-area: 9 / 1 / 11 / 11;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header></header>
+        <section></section>
+        <aside></aside>
+        <footer></footer>
+    </main>
+</body>
+</html>
