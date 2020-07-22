@@ -39,7 +39,7 @@ CREATE INDEX indexName ON tableName(fieldName1, fieldName2...);
 <SQL Syntex:JOIN>
 WHERE 절을 이용한 JOIN 방식
 SELECT a.alterField, b.alterField FROM alterTable a, alterTable b WHERE a.commonValue = b.commonValue(+) AND conditon2...;
--- 별칭이 a, b인 테이블의 필드를 선택하는데, 각 필드의 공통된 값을 비교하여 출력하고 싶은 필드의 값을 찾아준다. (+)는 outer join의 의미이다.
+-- 별칭이 a, b인 테이블의 필드를 선택하는데, 각 필드의 공통된 값을 비교하여 출력하고 싶은 필드의 값을 찾아준다. (+)는 TABLE a에 있을 경우 RIGHT, TABLE b에 있을 경우 LEFT outer join의 의미이다.
 JOIN ON 을 이용한 JOIN 방식
 SELECT a.alterField, b.alterField FROM alterTable a, JOIN alterTable b ON a.commonValue = b.commonValue JOIN ON 2... 혹은 AND condition2...;
 -- 위의 구문을 JOIN ON형식으로 변환했을 때 표현식. LEFT, RIGHT는 기본적으로 OUTER JOIN의 특성을 가지고 있다.
