@@ -1,9 +1,9 @@
 <CRUD : SQL 기본 구문>
 1_테이블 작성:
 CREATE TABLE tableName(
-    fieldName1(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE|PRIMARY KEY|FOREIGN KEY),
-    fieldName2(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE|PRIMARY KEY|FOREIGN KEY),
-    fieldName3(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE|PRIMARY KEY|FOREIGN KEY),
+    fieldName1(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE(auto INDEX)|PRIMARY KEY|FOREIGN KEY|INDEX),
+    fieldName2(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE(auto INDEX)|PRIMARY KEY|FOREIGN KEY|INDEX),
+    fieldName3(fieldType[NUMBER|VARCHAR2(length)|CHAR|DATE DEFAULT SYSDATE|], NOT NULL|UNIQUE(auto INDEX)|PRIMARY KEY|FOREIGN KEY|INDEX),
     PRIMARY KEY(fieldName1),
     FOREIGN KEY(fieldName2) REFERENCES alterTable(alterField) ON DELETE[CASCADE|RESTRICT|SET NULL|NO ACTION]
 )
@@ -11,7 +11,6 @@ CREATE TABLE tableName(
 2_데이터 검색:
 SELECT *[fieldNames|tableName(fieldNames)|subQuery|basicFunction] AS subName1 FROM tableName[dual|subQuery] AS subName2
 WHERE condition1 AND condition2 OR condition3
-LEFT|RIGHT|INNER|OUTER|FULLOUTER JOIN alterTable ON alterTable.field = subName2.field
 GROUP BY alterField HAVING condition4
 ORDER BY alterField[ASC|DESC]
 
@@ -22,6 +21,28 @@ WHERE condition1 AND condition2 OR condition3
 4_데이터 삭제:
 DELETE alterField FROM alterTable
 WHERE condition1 AND condition2 OR condition3
+
+
+<SQL 추가 구문>
+1_뷰 생성:
+CREATE OR REPLACE VIEW viewName AS subQuery(SELECT)
+
+2_데이터 사전(테이블 내 데이터 검색):
+SELECT * FROM USER_TABLES;
+SELECT * FROM USER_INDEXES;
+SELECT * FROM USER_VIEWS;
+
+3_인덱스 생성:
+CREATE INDEX indexName ON tableName(fieldName1, fieldName2...);
+
+
+<SQL Syntex:JOIN>
+WHERE 절을 이용한 JOIN 방식
+SELECT a.alterField, b.alterField FROM alterTable a, alterTable b WHERE a.commonValue = b.commonValue(+) AND conditon2...;
+-- 별칭이 a, b인 테이블의 필드를 선택하는데, 각 필드의 공통된 값을 비교하여 출력하고 싶은 필드의 값을 찾아준다. (+)는 outer join의 의미이다.
+JOIN ON 을 이용한 JOIN 방식
+SELECT a.alterField, b.alterField FROM alterTable a, JOIN alterTable b ON a.commonValue = b.commonValue JOIN ON 2... 혹은 AND condition2...;
+-- 위의 구문을 JOIN ON형식으로 변환했을 때 표현식. LEFT, RIGHT는 기본적으로 OUTER JOIN의 특성을 가지고 있다.
 
 
 <SQL BASIC FUNCTION>
@@ -41,6 +62,7 @@ SUBSTR('alterFieldValue', n1, n2); 기성 값의 n1번째부터 n2길이 만큼�
 INSTR('alterFieldValue', 'findValue', n1, n2); 기성 값 중 찾으려는 값의 위치를 정수로 반환, n1, n2를 사용할 경우 n1은 찾으려는 값보다 n1만큼 뒤의 값을 찾고, n2은 중복된 값이 있을 경우, 여러 값 중 몇번째의 값을 찾을 것인지를 검색
 LPAD('alterFieldValue', n, 'setValue'); 기성값의 좌측에 n의 길이만큼(n에는 기성값의 길이를 포함) setValue를 추가
 RPAD('alterFieldValue', n, 'setValue'); 기성값의 우측에 n의 길이만큼(n에는 기성값의 길이를 포함) setValue를 추가
+
 
 <SQl FUNCTION>
 SYSDATE,['expression']; 현재 시간을 출력, 형식을 쓸 경우 형식에 맞게 표시 ex) 'yyyy-mm-dd hh24:mi:ss'
