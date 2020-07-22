@@ -12,7 +12,7 @@ CREATE TABLE tableName(
 SELECT *[fieldNames|tableName(fieldNames)|subQuery|basicFunction] AS subName1 FROM tableName[dual|subQuery] AS subName2
 WHERE condition1 AND condition2 OR condition3
 LEFT|RIGHT|INNER|OUTER|FULLOUTER JOIN alterTable ON alterTable.field = subName2.field
-GROUP BY alterField
+GROUP BY alterField HAVING condition4
 ORDER BY alterField[ASC|DESC]
 
 3_데이터 갱신:
