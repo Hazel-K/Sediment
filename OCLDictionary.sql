@@ -62,6 +62,10 @@ SUBSTR('alterFieldValue', n1, n2); 기성 값의 n1번째부터 n2길이 만큼�
 INSTR('alterFieldValue', 'findValue', n1, n2); 기성 값 중 찾으려는 값의 위치를 정수로 반환, n1, n2를 사용할 경우 n1은 찾으려는 값보다 n1만큼 뒤의 값을 찾고, n2은 중복된 값이 있을 경우, 여러 값 중 몇번째의 값을 찾을 것인지를 검색
 LPAD('alterFieldValue', n, 'setValue'); 기성값의 좌측에 n의 길이만큼(n에는 기성값의 길이를 포함) setValue를 추가
 RPAD('alterFieldValue', n, 'setValue'); 기성값의 우측에 n의 길이만큼(n에는 기성값의 길이를 포함) setValue를 추가
+LENGTH('alterFieldValue'); 기성값의 문자열 길이 반환
+LENGTHB('alterFieldValue'); 기성값의 문자열 바이트 길이 반환
+MOD('alterFieldValue', n); 기성값을 n으로 나눈 나머지값 반환
+ROWNUM = n; n번째 값을 출력, 연산식 사용가능
 
 
 <SQl FUNCTION>
