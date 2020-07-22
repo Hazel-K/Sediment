@@ -1,0 +1,19 @@
+오전 9:39 2020-07-22
+DROP TABLE t_stduent2;
+CREATE TALBE t_student2 (
+	i_student_1 NUMBER UNIQUE NOT NULL,
+	i_student_2 NUMBER UNIQUE NOT NULL,
+	age number(3) NOT NULL,
+	PRIMARY KEY(i_student)
+);
+
+오전 10:45 2020-07-22
+CREATE VIEW view_board_cnt AS SELECT i_board,count(i_board) AS like_cnt
+FROM t_board_like
+GROUP BY i_board;
+
+SELECT * FROM view_board_cnt;
+
+DROP VIEW view_board_cnt;
+
+SELECT * FROM USER_INDEXES;
