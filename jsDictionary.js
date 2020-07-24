@@ -9,8 +9,20 @@
     boolean(); 비논리형을 논리형으로 변환하는 함수 <return type: boolean>
     parseInt(); 문자를 정수로 <return type: Number>
     parseFloat(); 문자를 실수로 <return type: Number>
-    location.reload(); 브라우저를 새로 고침
+    location.reload(); 브라우저를 새로 고침 <return type: void>
     element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
+
+<ARRAY FUNCTION>
+    Array.join(anyLetter); 해당 배열 인덱스 사이사이에 anyLetter를 삽입하여 출력 <return type: String>
+    Array.concat(Array2); Array에 Array2를 붙임 <return type: void>
+    Array.slice(n1, n2); Array를 n1부터 (n2 - 1)까지 남겨두고 잘라냄 <return type: void>
+    Array.splice(n1, n2, obj); Array를 n1부터 n2개 까지 잘라내고 그 자리에 obj를 삽입 <return type: void>
+    Array.unshift(obj); Array 처음 index에 obj를 추가 <return type: void>
+    Array.push(obj); Array 마지막 index에 obj를 추가 <return type: void>
+    Array.pop(); Array의 마지막 index value 반환 <return type: 해당 value type>
+    Array.shift(); Array의 처음 index value 반환 <return type: 해당 value type>
+    Array.sort(); Array의 value를 오름차순 으로 변환 <return type: void>
+    Array.reverse(); Array의 index를 뒤집음 <return type: void>
 
 <DOCUMENT FUNCTION>
     document.querySelector("Selector"); 선택자를 통해 Element 지정 <return type: element>
@@ -37,3 +49,6 @@
     <대부분 JAVA가 가진 Operator와 일치>
     "a" == a: true, 순수 값이 같은지를 확인
     "a" === a: false, 값 이외에 자료형이 일치하는지도 확인
+
+<SCRIPT ~ HTML>
+    form 안에 있는 여러 input 태그들의 값 추출이 가능. ex) formName[`inputName`].value
