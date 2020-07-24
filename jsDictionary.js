@@ -13,6 +13,18 @@
     element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
     float.tofixed(n); 실수를 n번째 자리만큼 잘라서 반환 <return type: double>
 
+<MATH FUNCTION>
+    Math.abs(n) n의 절대값
+    Math.max(n1, n2...) 최대값
+    Math.min(n1, n2...) 최소값
+    Math.random 0 ~ 0.9... 사이의 난수 반환
+    Math.pow(n1, n2) n1의 n2제곱값 반환
+    Math.round(n) 반올림
+    Math.floor(n) 버림
+    Math.ceil(n) 올림
+    Math.sqrt(n) 제곱근
+    Math.PI 원주율
+
 <ARRAY FUNCTION>
     Array.join(anyLetter); 해당 배열 인덱스 사이사이에 anyLetter를 삽입하여 출력 <return type: String>
     Array.concat(Array2); Array에 Array2를 붙임 <return type: void>
@@ -20,18 +32,19 @@
     Array.splice(n1, n2, obj); Array를 n1부터 n2개 까지 잘라내고 그 자리에 obj를 삽입 <return type: void>
     Array.unshift(obj); Array 처음 index에 obj를 추가 <return type: void>
     Array.push(obj); Array 마지막 index에 obj를 추가 <return type: void>
-    Array.pop(); Array의 마지막 index value 반환 <return type: 해당 value type>
-    Array.shift(); Array의 처음 index value 반환 <return type: 해당 value type>
+    Array.pop(); Array의 마지막 index value를 삭제 후 반환 <return type: 해당 value type>
+    Array.shift(); Array의 처음 index value를 삭제 후 반환 <return type: 해당 value type>
     Array.sort(); Array의 value를 오름차순 으로 변환 <return type: void>
     Array.reverse(); Array의 index를 뒤집음 <return type: void>
+    Array.legnth Array의 길이 반환 <return type: Number>
 
 <DOCUMENT FUNCTION>
     document.querySelector("Selector"); 선택자를 통해 Element 지정 <return type: element>
     document.getElementById("id"); #id를 통해 Element 지정 <return type: element>
     document.getElementByClass("class"); .class를 통해 Element 지정 <return type: element>
     document.write("text"); 원하는 text를 출력, html문법 직접사용 가능 <return type: void>
-    document.innerText = ""; 원하는 text를 입력 <return type: String>
-    document.innerHTML = ""; 원하는 text를 입력, HTML 문법을 적용 <return type: String>
+    document.innerText = ""; 원하는 text를 입력 <return type: void>
+    document.innerHTML = ""; 원하는 text를 입력, HTML 문법을 적용 <return type: void>
 
 <FIELD SETTING>
     let or var = n; 변수 설정
