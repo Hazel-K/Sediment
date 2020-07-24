@@ -11,6 +11,7 @@
     parseFloat(); 문자를 실수로 <return type: Number>
     location.reload(); 브라우저를 새로 고침 <return type: void>
     element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
+    float.tofixed(n); 실수를 n번째 자리만큼 잘라서 반환 <return type: double>
 
 <ARRAY FUNCTION>
     Array.join(anyLetter); 해당 배열 인덱스 사이사이에 anyLetter를 삽입하여 출력 <return type: String>
