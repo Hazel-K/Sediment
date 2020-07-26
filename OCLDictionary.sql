@@ -19,7 +19,7 @@ UPDATE alterTable SET alterFieldValue = setValue
 WHERE condition1 AND condition2 OR condition3
 
 4_데이터 삭제:
-DELETE alterField FROM alterTable
+DELETE FROM alterTable
 WHERE condition1 AND condition2 OR condition3
 
 
