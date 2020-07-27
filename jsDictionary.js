@@ -9,9 +9,12 @@
     boolean(); 비논리형을 논리형으로 변환하는 함수 <return type: boolean>
     parseInt(); 문자를 정수로 <return type: Number>
     parseFloat(); 문자를 실수로 <return type: Number>
-    location.reload(); 브라우저를 새로 고침 <return type: void>
     element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
     float.tofixed(n); 실수를 n번째 자리만큼 잘라서 반환 <return type: double>
+    setInterval(Value, n); n밀리초마다 Value 실행
+    clearInterval(); setInterval 함수 초기화
+    setTimeout(Value, n); n밀리초를 초과하면 Value 실행
+    clearTimeout(); setTimeout 함수 초기화
 
 <MATH FUNCTION>
     Math.abs(n) n의 절대값
@@ -24,6 +27,50 @@
     Math.ceil(n) 올림
     Math.sqrt(n) 제곱근
     Math.PI 원주율
+
+<DATE FUNCTION : new date()로 객체화시킨 다음 사용, 모든 get은 set으로 설정 전환 가능>
+    date.getFullYear(); 연도 반환
+    date.getMonth(); 달 반환
+    date.getDate(); 일 반환
+    date.getDay(); 요일 반환 (setDay는 존재하지 않음)
+    date.getHours(); 시간 반환
+    date.getMinutes(); 분 반환
+    date.getSeconds(); 초 반환
+    date.getMiliseconds(); 밀리초 반환
+    date.getTime(); 경과된 시간을 밀리초로 표기. 70.01.01. 기준
+    date.toGMTString(); GMT표준 방식으로 문자열로 반환
+
+<LOCATION FUNCTION>
+    location.reload(); 브라우저를 새로 고침 <return type: void>
+    location.href; 참조 주소 반환
+    location.hash; 해시값(#)을 반환
+    location.hostname; 호스트 이름 설정 혹은 반환
+    location.host; 호스트 이름과 포트 번호 반환
+    location.protocol; 프로토콜 반환
+    location.search; 쿼리를 반환
+
+<HISTORY FUNCTION>
+    history.back(); 이전 방문 사이트
+    history.forward(); 다음 방문 사이트
+    history.go(n); n번째 만큼의 다음 방문 사이트
+    history.length; 방문 기록에 저장된 목록 개수 반환
+
+<NAVIGATOR FUNCTION>
+    navigator.appCodeName; 브라우저의 코드명 반환
+    navigator.appCodeName; 브라우저 이름 반환
+    navigator.appVersion; 브라우저 버전 반환
+    navigator.language; 브라우저 언어 반환
+    navigator.product; 브라우저 엔진 반환
+    navigator.plattfom; 컴퓨터 운영체제 반환
+    navigator.onLine; 온라인 상태 여부 반환
+    navigator.userAgent; 브라우저, 운영체제 종합 정보 반환
+
+<SCREEN FUNCTION>
+    screen.width; 화면의 너비값 반환
+    screen.height; 화면의 높이값 반환
+    screen.availWidth; 상태 표시줄을 제외한 너비값 반환
+    screen.availHeight; 상태 표시줄을 제외한 높이값 반환
+    screen.colorDepth; 사용자의 모니터가 표현 가능한 컬러 bit를 반환
 
 <ARRAY FUNCTION>
     Array.join(anyLetter); 해당 배열 인덱스 사이사이에 anyLetter를 삽입하여 출력 <return type: String>
@@ -45,6 +92,7 @@
     document.write("text"); 원하는 text를 출력, html문법 직접사용 가능 <return type: void>
     document.innerText = ""; 원하는 text를 입력 <return type: void>
     document.innerHTML = ""; 원하는 text를 입력, HTML 문법을 적용 <return type: void>
+    document.createElement("tagName"); tagName을 생성
 
 <FIELD SETTING>
     let or var = n; 변수 설정
