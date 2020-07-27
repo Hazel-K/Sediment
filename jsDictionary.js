@@ -10,11 +10,19 @@
     parseInt(); 문자를 정수로 <return type: Number>
     parseFloat(); 문자를 실수로 <return type: Number>
     element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
+    element.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
     float.tofixed(n); 실수를 n번째 자리만큼 잘라서 반환 <return type: double>
     setInterval(Value, n); n밀리초마다 Value 실행
     clearInterval(); setInterval 함수 초기화
     setTimeout(Value, n); n밀리초를 초과하면 Value 실행
     clearTimeout(); setTimeout 함수 초기화
+    text.charAt(n); text n번째에 해당하는 문자 반환 <return type: String>
+    text.indexOf("innerText"); text에 innerText가 있다면 해당 문자열의 첫번째 위치 반환, 해당 문자열이 없다면 -1 반환, search와 동일 <return type: Number>
+    text.lastIndexOf("innerText"); text에 innerText가 여러 개 있다면 해당 문자열의 마지막 위치 반환, 해당 문자열이 없다면 -1 반환 <return type: Number>
+    text.replace("oldText", "newText"); text 내 oldText를 newText로 변경, 변수에 대입해야 제대로 시행됨 <return type: String>
+    text.slice(n1, n2); text에서 n1부터 n2(text첫 자리가 기준) 앞까지의 문자열을 잘라내 그것을 반환, subString과 동일 <return type: String>
+    text.substr(n1, n2); text에서 n1부터 n2(n1첫 자리가 기준) 앞까지의 문자열을 잘라내 그것을 반환 <return type: String>
+    text.match("innerText"); text 내 innerText가 있다면 가장 먼저 찾은 문자열을 반환, 없으면 null <return type: String>
 
 <MATH FUNCTION>
     Math.abs(n) n의 절대값
