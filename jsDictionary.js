@@ -9,13 +9,18 @@
     boolean(); 비논리형을 논리형으로 변환하는 함수 <return type: boolean>
     parseInt(); 문자를 정수로 <return type: Number>
     parseFloat(); 문자를 실수로 <return type: Number>
-    element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
-    element.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
     float.tofixed(n); 실수를 n번째 자리만큼 잘라서 반환 <return type: double>
     setInterval(Value, n); n밀리초마다 Value 실행
     clearInterval(); setInterval 함수 초기화
     setTimeout(Value, n); n밀리초를 초과하면 Value 실행
     clearTimeout(); setTimeout 함수 초기화
+
+<ELEMENT FUNCTION>
+    element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
+    element.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
+    element.setAttribute("attName", "attValue"); 해당 element의 attName에 해당하는 attValue를 지정
+
+<TEXT FUNCTION>
     text.charAt(n); text n번째에 해당하는 문자 반환 <return type: String>
     text.indexOf("innerText"); text에 innerText가 있다면 해당 문자열의 첫번째 위치 반환, 해당 문자열이 없다면 -1 반환, search와 동일 <return type: Number>
     text.lastIndexOf("innerText"); text에 innerText가 여러 개 있다면 해당 문자열의 마지막 위치 반환, 해당 문자열이 없다면 -1 반환 <return type: Number>
@@ -23,6 +28,12 @@
     text.slice(n1, n2); text에서 n1부터 n2(text첫 자리가 기준) 앞까지의 문자열을 잘라내 그것을 반환, subString과 동일 <return type: String>
     text.substr(n1, n2); text에서 n1부터 n2(n1첫 자리가 기준) 앞까지의 문자열을 잘라내 그것을 반환 <return type: String>
     text.match("innerText"); text 내 innerText가 있다면 가장 먼저 찾은 문자열을 반환, 없으면 null <return type: String>
+    text.split("innerText"); text를 innerText기준으로 나누어 각각의 값을 하나의 배열로 반환 <return type: Array>
+    text.toLowerCase(); 텍스트를 소문자로 변경 <> toUpperCase(); <return type: String>
+    text.concat("innerText"); 텍스트를 innerText와 연결 <return type: String>
+    text.charCodeAt(n); n번째 text에 해당하는 ASCII 코드 반환 <return type: String>
+    String.fromCharCode(n); n번째에 해당하는 ASCII 코드 반환 <return type: String>
+    text.trim(); 양쪽 공백 제거 <return type: String>
 
 <MATH FUNCTION>
     Math.abs(n) n의 절대값
@@ -105,7 +116,7 @@
 <FIELD SETTING>
     let or var = n; 변수 설정
     const = n; 상수 설정
-    function funcName(args) {excutor;} 함수 설정의 기본 형태
+    function funcName(arguments.length) {excutor;} 함수 설정의 기본 형태
 
 <DATA TYPE>
     String: 문자형, a = "character";
