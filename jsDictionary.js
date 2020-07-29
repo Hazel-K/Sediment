@@ -15,11 +15,6 @@
     setTimeout(Value, n); n밀리초를 초과하면 Value 실행
     clearTimeout(); setTimeout 함수 초기화
 
-<ELEMENT FUNCTION>
-    element.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
-    element.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
-    element.setAttribute("attName", "attValue"); 해당 element의 attName에 해당하는 attValue를 지정
-
 <TEXT FUNCTION>
     text.charAt(n); text n번째에 해당하는 문자 반환 <return type: String>
     text.indexOf("innerText"); text에 innerText가 있다면 해당 문자열의 첫번째 위치 반환, 해당 문자열이 없다면 -1 반환, search와 동일 <return type: Number>
@@ -112,11 +107,18 @@
     document.innerText = ""; 원하는 text를 입력 <return type: void>
     document.innerHTML = ""; 원하는 text를 입력, HTML 문법을 적용 <return type: void>
     document.createElement("tagName"); tagName을 생성
+    document.createTextnode("text"); text로 구성된 Node를 생성
+    document.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
+    document.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
+    document.setAttribute("attName", "attValue"); 해당 element의 attName에 해당하는 attValue를 지정
 
 <FIELD SETTING>
     let or var = n; 변수 설정
+    let or var = function(params){} 익명 함수 설정, varName(prams)의 형태로 호출 가능(hoisting 지원하지 않음)
+    let or var = (function(params){} (params) ); 익명함수 바로 실행(hoisting 지원하지 않음)
     const = n; 상수 설정
     function funcName(arguments.length) {excutor;} 함수 설정의 기본 형태
+    function fn1(fn2) {fn2();} 콜백 함수의 기본 형태
 
 <DATA TYPE>
     String: 문자형, a = "character";
