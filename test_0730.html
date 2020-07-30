@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 650px;
+            margin: 30px auto;
+            text-align: center;
+        }
+    </style>
+    <!-- 
+        1. 베팅금 미입력시 경고창 출력, 입력해야만 게임 시작
+        2. 주사위는 각각 난수를 만들고, 이미지와 함께 표시
+        3. 같은 숫자 3개면 10배, 두 개면 2배의 상금
+        4. 배팅 결과를 주사위 이미지 아래에 출력
+        5. 돈은 천 단위 구분 기호 사용
+     -->
+</head>
+
+<body>
+    <main class="container">
+        <header class="wrapper wrap__haeder">
+            <h1>잭팟 게임</h1>
+            <div class="info">
+                <p>주사위를 던져주세요.</p>
+                <p>같은 숫자가 3개면 베팅 금액의 10배, 숫자 2개가 일치하면 2배</p>
+                <p>베팅금액을 입력하고 플레이 버튼을 누르면 게임을 시작합니다.</p>
+                <button onclick="init();">게임 시작</button>
+            </div>
+        </header>
+        <section class="wrapper wrap__section">
+
+        </section>
+    </main>
+    <script>
+        function init() {
+            let inputNum = Number(prompt(`숫자를 입력해주세요(1 ~ 6)`, 1));
+            let select1 = document.querySelector(".wrap__section");
+            if (isNaN(inputNum)) {
+                alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`)
+                location.reload();
+            }
+            if (inputNum < 1 || inputNum > 6) {
+                alert(`1에서 6사이의 숫자만 입력해주세요.`);
+                location.reload();
+            } else {
+                select1.appendChild(document.createElement("div")).innerText = "test";
+                select1.querySelector("div").setAttribute("class", "com");
+                // for (let i = 1; i < 4; i++) {
+                //     select1.querySelector(".com").appendChild(document.createElement("div").innerText='test'+i;
+                // }
+            }
+        }
+    </script>
+</body>
+
+</html>

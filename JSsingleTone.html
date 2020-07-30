@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object와 SingleTone</title>
+</head>
+<body>
+    <script>
+        // 변수를 이용한 객체(Class)를 생성하는 2가지 방법
+        var person = {
+            name : '이익준',
+            major : '외과',
+            age : 42
+        };
+        var person2 = new Object();
+        person2.name = '가나다';
+        person2.major = '내과';
+        person2.age = '38';
+        // 객체 생성자 함수를 통한 인스턴스 객체 생성 방법
+        function Student(name, major, age) {
+            this.name = name;
+            this.major = major;
+            this.age = age;
+        }
+        // 객체 생성자 함수 속 메소드를 포함하기
+        function ClassObj(name, kor, mat, eng) {
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+            this.eng = eng;
+            this.sum = () => this.kor + this.mat + this.eng;
+            // this.sum = function() { return this.kor + this.mat + this.eng; }
+            this.getInfo = () => `이름 : ${this.name}</br>국어 : ${this.kor}</br>영어 : ${this.eng}</br>수학 : ${this.mat}</br>`;
+        }
+        let kim = new ClassObj('김효진', 98, 76, 80);
+        document.write(kim.getInfo());
+        document.write(kim.sum());
+    </script>
+</body>
+</html>
