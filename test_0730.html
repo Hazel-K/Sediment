@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .container {
-            width: 650px;
-            margin: 30px auto;
-            text-align: center;
-        }
+      .container {
+        width: 650px;
+        margin: 30px auto;
+        text-align: center;
+      }
+      .wrap__section .com {
+        display: flex;
+        justify-content: space-around;
+      }
     </style>
     <!-- 
         1. 베팅금 미입력시 경고창 출력, 입력해야만 게임 시작
@@ -19,43 +22,90 @@
         4. 배팅 결과를 주사위 이미지 아래에 출력
         5. 돈은 천 단위 구분 기호 사용
      -->
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="container">
-        <header class="wrapper wrap__haeder">
-            <h1>잭팟 게임</h1>
-            <div class="info">
-                <p>주사위를 던져주세요.</p>
-                <p>같은 숫자가 3개면 베팅 금액의 10배, 숫자 2개가 일치하면 2배</p>
-                <p>베팅금액을 입력하고 플레이 버튼을 누르면 게임을 시작합니다.</p>
-                <button onclick="init();">게임 시작</button>
-            </div>
-        </header>
-        <section class="wrapper wrap__section">
-
-        </section>
+      <header class="wrapper wrap__haeder">
+        <h1>잭팟 게임</h1>
+        <div class="info">
+          <p>주사위를 던져주세요.</p>
+          <p>같은 숫자가 3개면 베팅 금액의 10배, 숫자 2개가 일치하면 2배</p>
+          <p>베팅금액을 입력하고 플레이 버튼을 누르면 게임을 시작합니다.</p>
+          <button onclick="init();">게임 시작</button>
+        </div>
+      </header>
+      <section class="wrapper wrap__section"></section>
     </main>
     <script>
-        function init() {
-            let inputNum = Number(prompt(`숫자를 입력해주세요(1 ~ 6)`, 1));
-            let select1 = document.querySelector(".wrap__section");
-            if (isNaN(inputNum)) {
-                alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`)
-                location.reload();
-            }
-            if (inputNum < 1 || inputNum > 6) {
-                alert(`1에서 6사이의 숫자만 입력해주세요.`);
-                location.reload();
-            } else {
-                select1.appendChild(document.createElement("div")).innerText = "test";
-                select1.querySelector("div").setAttribute("class", "com");
-                // for (let i = 1; i < 4; i++) {
-                //     select1.querySelector(".com").appendChild(document.createElement("div").innerText='test'+i;
-                // }
-            }
+      function init() {
+        let inputBet = Number(prompt(`베팅할 금액을 입력해주세요.`));
+        if (isNaN(inputBet)) {
+          alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`);
+          location.reload();
         }
+        let inputNum = Number(prompt(`숫자를 입력해주세요(1 ~ 6)`, 1));
+        let dice = [0, 0, 0];
+        let select1 = document.querySelector(".wrap__section");
+        if (isNaN(inputNum)) {
+          alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`);
+          location.reload();
+        }
+        if (inputNum < 1 || inputNum > 6) {
+          alert(`1에서 6사이의 숫자만 입력해주세요.`);
+          location.reload();
+        } else {
+          for (let i = 1; i < 3; i++) {
+            let tempArr = ["user", "com"];
+            select1.appendChild(document.createElement("div"));
+            select1
+              .querySelector(`div:nth-child(${i})`)
+              .setAttribute("class", tempArr[i - 1]);
+          }
+          document.querySelector(
+            `.user`
+          ).innerHTML = `베팅 금액 : ${inputBet}</br>내가 선택한 숫자 : ${inputNum}`;
+          for (let i = 1; i < 4; i++) {
+            let com = select1.querySelector(".com");
+            dice[i] = parseInt(Math.random() * 6 + 1);
+            com.appendChild(document.createElement("div"));
+            com
+              .querySelector(`div:nth-child(${i})`)
+              .setAttribute("class", "diceNum");
+            com.querySelector(
+              `div:nth-child(${i})`
+            ).innerHTML = `주사위 ${i} : ${dice[i]}`;
+          }
+          // for (let i = 1; i < 4; i++) {
+          //   let com = select1.querySelector(".com");
+          //   com
+          //     .querySelector(`div:nth-child(${i})`)
+          //     .appendChild(document.createElement("img"));
+          //   com
+          //     .querySelector(`div:nth-child(${i}) img`)
+          //     .setAttribute("src", "#");
+          // }
+          // select1
+          //   .querySelector(".com div:nth-child(2)")
+          //   .querySelector("img")
+          //   .setAttribute("src", "#");
+        }
+        let cnt = 0;
+        for (let i = 0; i < dice.length; i++) {
+          if (inputNum == dice[i]) {
+            cnt++;
+          }
+        }
+        if (cnt == 3) {
+          inputBet *= 10;
+          alert(`잭팟! 축하합니다!! 총 당첨금은 ${inputBet}입니다.`)
+        } else if (cnt == 2) {
+          inputBet *= 2;
+          alert(`당첨! 총 당첨금은 ${inputBet}입니다.`)
+        } else {
+          alert(`꽝입니다. 다음 기회에 도전하세요`);
+        }
+      }
     </script>
-</body>
-
+  </body>
 </html>
