@@ -1,19 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      .container {
-        width: 650px;
-        margin: 30px auto;
-        text-align: center;
-      }
-      .wrap__section .com {
-        display: flex;
-        justify-content: space-around;
-      }
+        .container {
+            width: 650px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .com {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        label {
+            margin-right: 20px;
+            font-weight: 800;
+        }
+
+        .info p:last-child {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .info__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info__wrapper button {
+            margin-left: 10px;
+        }
+
+        .wrap__footer {
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: 800;
+        }
     </style>
     <!-- 
         1. 베팅금 미입력시 경고창 출력, 입력해야만 게임 시작
@@ -22,90 +51,84 @@
         4. 배팅 결과를 주사위 이미지 아래에 출력
         5. 돈은 천 단위 구분 기호 사용
      -->
-  </head>
+</head>
 
-  <body>
+<body>
     <main class="container">
-      <header class="wrapper wrap__haeder">
-        <h1>잭팟 게임</h1>
-        <div class="info">
-          <p>주사위를 던져주세요.</p>
-          <p>같은 숫자가 3개면 베팅 금액의 10배, 숫자 2개가 일치하면 2배</p>
-          <p>베팅금액을 입력하고 플레이 버튼을 누르면 게임을 시작합니다.</p>
-          <button onclick="init();">게임 시작</button>
-        </div>
-      </header>
-      <section class="wrapper wrap__section"></section>
+        <header class="wrapper wrap__haeder">
+            <h1>잭팟 게임</h1>
+            <div class="info">
+                <p>주사위를 던져주세요.</p>
+                <p>같은 숫자가 3개면 베팅 금액의 10배, 숫자 2개가 일치하면 2배</p>
+                <p>베팅금액을 입력하고 플레이 버튼을 누르면 게임을 시작합니다.</p>
+            </div>
+            <div class="info__wrapper">
+                <label for="bet">베팅할 금액 입력</label><input type="text" id="bet"><button onclick="init();">베팅</button>
+            </div>
+        </header>
+        <section class="wrapper wrap__section">
+            <div class="user">
+                <h3 id="user__info"></h3>
+            </div>
+            <div class="com">
+                <div class="dice1"><img id="dice__0" src="../images/dice/dice_info.png" alt=""></div>
+                <div class="dice2"><img id="dice__1" src="../images/dice/dice_info.png" alt=""></div>
+                <div class="dice3"><img id="dice__2" src="../images/dice/dice_info.png" alt=""></div>
+            </div>
+            <button onclick="result();">주사위 굴리기</button>
+        </section>
+        <footer class="wrapper wrap__footer">
+        </footer>
     </main>
     <script>
-      function init() {
-        let inputBet = Number(prompt(`베팅할 금액을 입력해주세요.`));
-        if (isNaN(inputBet)) {
-          alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`);
-          location.reload();
+        let total = 1000;
+        let betVal;
+
+        function numberFormat(inputNumber) {
+            return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        let inputNum = Number(prompt(`숫자를 입력해주세요(1 ~ 6)`, 1));
-        let dice = [0, 0, 0];
-        let select1 = document.querySelector(".wrap__section");
-        if (isNaN(inputNum)) {
-          alert(`숫자를 입력하지 않으셨습니다. 다시 입력해주세요.`);
-          location.reload();
+        
+        let myInfo = document.createElement("p");
+        let myInfo1 = document.querySelector(".info").appendChild(myInfo);
+        myInfo1.innerText = "보유금 : " + numberFormat(total);
+
+        function init() {
+            betVal = document.querySelector("#bet").value;
+            document.querySelector("#bet").value = null;
+            if (betVal <= 0 || isNaN(betVal)) {
+                alert(`베팅 금액을 잘못 입력하셨습니다. 베팅 금액은 1 이상의 정수로 적어주세요.`);
+                location.reload();
+            }
+            document.querySelector("#user__info").innerText = "베팅한 금액 : " + numberFormat(betVal) + "칩";
         }
-        if (inputNum < 1 || inputNum > 6) {
-          alert(`1에서 6사이의 숫자만 입력해주세요.`);
-          location.reload();
-        } else {
-          for (let i = 1; i < 3; i++) {
-            let tempArr = ["user", "com"];
-            select1.appendChild(document.createElement("div"));
-            select1
-              .querySelector(`div:nth-child(${i})`)
-              .setAttribute("class", tempArr[i - 1]);
-          }
-          document.querySelector(
-            `.user`
-          ).innerHTML = `베팅 금액 : ${inputBet}</br>내가 선택한 숫자 : ${inputNum}`;
-          for (let i = 1; i < 4; i++) {
-            let com = select1.querySelector(".com");
-            dice[i] = parseInt(Math.random() * 6 + 1);
-            com.appendChild(document.createElement("div"));
-            com
-              .querySelector(`div:nth-child(${i})`)
-              .setAttribute("class", "diceNum");
-            com.querySelector(
-              `div:nth-child(${i})`
-            ).innerHTML = `주사위 ${i} : ${dice[i]}`;
-          }
-          // for (let i = 1; i < 4; i++) {
-          //   let com = select1.querySelector(".com");
-          //   com
-          //     .querySelector(`div:nth-child(${i})`)
-          //     .appendChild(document.createElement("img"));
-          //   com
-          //     .querySelector(`div:nth-child(${i}) img`)
-          //     .setAttribute("src", "#");
-          // }
-          // select1
-          //   .querySelector(".com div:nth-child(2)")
-          //   .querySelector("img")
-          //   .setAttribute("src", "#");
+
+        function result() {
+            if (total - betVal < 0) {
+                alert(`보유금보다 많은 금액을 배팅할 수 없습니다.`);
+                return;
+            } else {
+                total = total - betVal;
+                myInfo1.innerText = "보유금 : " + numberFormat(total);
+            }
+            let diceArr = [0, 0, 0];
+            for (let i = 0; i < diceArr.length; i++) {
+                diceArr[i] = parseInt((Math.random() * 6) + 1);
+                document.querySelector("#dice__" + i).setAttribute("src", "../images/dice/dice_" + diceArr[i] + ".png");
+            }
+
+            if (diceArr[0] == diceArr[1] && diceArr[0] == diceArr[2]) {
+                total += betVal * 10;
+                myInfo1.innerText = "보유금 : " + numberFormat(total);
+                document.querySelector(".wrap__footer").innerText = "잭팟!! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 10) + "칩입니다.";
+            } else if (diceArr[0] == diceArr[1] || diceArr[1] == diceArr[2] || diceArr[0] == diceArr[2]) {
+                total += betVal * 2;
+                myInfo1.innerText = "보유금 : " + numberFormat(total);
+                document.querySelector(".wrap__footer").innerText = "두개 일치~! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 2) + "칩입니다.";
+            } else {
+                document.querySelector(".wrap__footer").innerText = "꽝입니다. 다음에 다시 도전해주세요.";
+            }
         }
-        let cnt = 0;
-        for (let i = 0; i < dice.length; i++) {
-          if (inputNum == dice[i]) {
-            cnt++;
-          }
-        }
-        if (cnt == 3) {
-          inputBet *= 10;
-          alert(`잭팟! 축하합니다!! 총 당첨금은 ${inputBet}입니다.`)
-        } else if (cnt == 2) {
-          inputBet *= 2;
-          alert(`당첨! 총 당첨금은 ${inputBet}입니다.`)
-        } else {
-          alert(`꽝입니다. 다음 기회에 도전하세요`);
-        }
-      }
     </script>
-  </body>
+</body>
+
 </html>
