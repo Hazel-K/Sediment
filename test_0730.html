@@ -96,15 +96,21 @@
 
         function numberFormat(inputNumber) {
             return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            // return inputNumer.toLocalString(); 이거도 됨
         }
         
         function init() {
             betVal = document.querySelector("#bet").value;
-            document.querySelector("#bet").value = null;
-            if (betVal <= 0 || isNaN(betVal)) {
+            if (total < betVal) {
+                alert(`베팅은 보유한 금액을 초과할 수 없습니다.`);
+                document.querySelector("#bet").value = null;
+                return;
+            } else if (betVal <= 0 || isNaN(betVal)) {
                 alert(`베팅 금액을 잘못 입력하셨습니다. 베팅 금액은 1 이상의 정수로 적어주세요.`);
-                location.reload();
+                document.querySelector("#bet").value = null;
+                return;
             }
+            document.querySelector("#bet").value = null;
             document.querySelector("#user__info").innerText = "베팅한 금액 : " + numberFormat(betVal) + "칩";
         }
 
