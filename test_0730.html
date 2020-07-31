@@ -71,9 +71,9 @@
                 <h3 id="user__info"></h3>
             </div>
             <div class="com">
-                <div class="dice1"><img id="dice__0" src="../images/dice/dice_info.png" alt=""></div>
-                <div class="dice2"><img id="dice__1" src="../images/dice/dice_info.png" alt=""></div>
-                <div class="dice3"><img id="dice__2" src="../images/dice/dice_info.png" alt=""></div>
+                <div class="dice1"><img class="dices" id="dice__0" src="" alt=""></div>
+                <div class="dice2"><img class="dices" id="dice__1" src="" alt=""></div>
+                <div class="dice3"><img class="dices" id="dice__2" src="" alt=""></div>
             </div>
             <button onclick="result();">주사위 굴리기</button>
         </section>
@@ -81,17 +81,23 @@
         </footer>
     </main>
     <script>
+        let dices = document.getElementsByClassName(`dices`); // 셀렉터가 배열로 저장된다.
+        let imgDir = "../images/dice/dice_info.png";
+        for (let i = 0; i < dices.length; i++) {
+            dices[i].setAttribute("src", imgDir);
+        }
+
         let total = 1000;
         let betVal;
+
+        let myInfo = document.createElement("p");
+        let myInfo1 = document.querySelector(".info").appendChild(myInfo);
+        myInfo1.innerText = "보유금 : " + numberFormat(total);
 
         function numberFormat(inputNumber) {
             return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         
-        let myInfo = document.createElement("p");
-        let myInfo1 = document.querySelector(".info").appendChild(myInfo);
-        myInfo1.innerText = "보유금 : " + numberFormat(total);
-
         function init() {
             betVal = document.querySelector("#bet").value;
             document.querySelector("#bet").value = null;
@@ -110,6 +116,7 @@
                 total = total - betVal;
                 myInfo1.innerText = "보유금 : " + numberFormat(total);
             }
+
             let diceArr = [0, 0, 0];
             for (let i = 0; i < diceArr.length; i++) {
                 diceArr[i] = parseInt((Math.random() * 6) + 1);
