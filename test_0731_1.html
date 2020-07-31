@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뭐시기의 서재 어쩌고</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 30px auto;
+        }
+
+        .hTitle {
+            background-color: rgba(91, 250, 242, 0.5);
+            width: inherit;
+            height: 100px;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            margin-bottom: 50px;
+        }
+
+        .content {
+            background-color: rgba(255, 238, 84, 0.5);
+            width: inherit;
+            height: 75px;
+            margin: 5px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .content>div:first-child {
+            margin-left: 20px;
+        }
+
+        .content>div:last-child {
+            margin-right: 20px;
+        }
+
+        .content>div:last-child>button {
+            font-size: 20px;
+            background-color: blanchedalmond;
+            border: 5px solid bisque;
+        }
+
+        .content>div:last-child>button:first-child {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <header class="hWrapper">
+            <div class="hTitle">뭐시기의 서재 어쩌고</div>
+        </header>
+        <section class="sWrapper">
+            <div class="content cnt__1">
+                <div>책</div>
+                <div><button>확인</button><button>삭제</button></div>
+            </div>
+            <div class="content cnt__2">
+                <div>책</div>
+                <div><button>확인</button><button>삭제</button></div>
+            </div>
+            <div class="content cnt__3">
+                <div>책</div>
+                <div><button>확인</button><button>삭제</button></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function Book(title, author, volume, price) {
+            this.title = title;
+            this.author = author;
+            this.volume = volume;
+            this.price = price;
+        }
+
+        Book.prototype.getInfo = function () {
+            return `제목 : ${this.title}, 저자 : ${this.author}, 페이지 : ${this.volume}, 가격 : ${this.price}`;
+        }
+
+        let bookArr = [
+            new Book("레미제라블", "김효진", 388, 18000),
+            new Book("노인과 바다", "정유정", 464, 12000),
+            new Book("전쟁과 평화", "석상원", 280, 23000)
+        ];
+
+        // bookArr.forEach(element => {
+        //     document.querySelector().innerHTML = element.title;
+        // });
+
+    </script>
+</body>
+
+</html>

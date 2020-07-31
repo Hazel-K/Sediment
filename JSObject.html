@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체활용 3</title>
+</head>
+<body>
+    <script>
+        //1. 싱글톤 객체 : 1개의 객체
+
+        //멤버의 변수를 각각 선언
+        var member1 = 112233, name1 = '이익준', age1 = 40;
+        //멤버의 객체를 각각 생성
+        var m1 = { no:112233, name:'이익준', age:40, };
+        var m2 = { no:445566, name:'김준완', age:42, };
+        var m3 = { no:778899, name:'채송화', age:39, };
+        var m4 = { no:101112, name:'양석형', age:41, };
+        var m5 = { no:131415, name:'안정원', age:38, };
+        //싱글톤 객체 사용
+        document.write("회원번호 : " + m1.no + "이름 : " + m1.name + "나이 " + m1.age + "<br>");
+        document.write("회원번호 : " + m2.no + "이름 : " + m2.name + "나이 " + m2.age + "<br>");
+        document.write("회원번호 : " + m3.no + "이름 : " + m3.name + "나이 " + m3.age + "<br>");
+        document.write("회원번호 : " + m4.no + "이름 : " + m4.name + "나이 " + m4.age + "<br>");
+        document.write("회원번호 : " + m5.no + "이름 : " + m5.name + "나이 " + m5.age + "<br><hr>");
+
+        //2. 객체 생성자 함수 : 다수의 객체를 생성
+        //객체 생성자 함수를 만들 때는 반드시 this 사용하여 생성한다.
+        //객체를 생성 할 때는 반드시 new를 사용하여 생성한다.
+        function Member(no, name, age) {
+            this.no = no;
+            this.name = name;
+            this.age = age;
+        }
+        //객체 생성
+        var members = [ new Member(112233, '이익준', 40),
+                        new Member(445566, '김준완', 42), 
+                        new Member(778899, '양석형', 42),
+                        new Member(101112, '채송화', 42),
+                        new Member(131415, '안정원', 42),
+        ];
+        
+        document.write("객체타입" + typeof Member + "<br>");
+        document.write("객체타입" + typeof members + "<br>");
+        document.write("객체타입" + typeof members[0] + "<br>");
+       
+        for(var i=0; i<members.length; i++){
+            document.write("회원번호 : " + members[i].no +  "이름 : " + members[i].name + "나이 " + members[i].age + "<br>")
+        }
+
+        // 객체 생성자 함수: 프로토타입
+        function Member(no, name, age) {
+            this.no = no;
+            this.name = name;
+            this.age = age;
+        }
+        Member.prototype.showInfo = function() { return `회원번호:${this.no}, 이름:${this.name}, 나이:${this.age}`; }
+        var Members = [
+            new Member(1, '가나다', 23),
+            new Member(2, '가나다', 23),
+            new Member(3, '가나다', 23),
+            new Member(4, '가나다', 23),
+            new Member(5, '가나다', 23)
+        ];
+        for (var i = 0; i < Members.length; i++) {
+            document.write(Members[i].showInfo());
+        }
+    </script>    
+</body>
+</html>
