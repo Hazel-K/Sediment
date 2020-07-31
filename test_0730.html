@@ -43,6 +43,15 @@
             font-size: 20px;
             font-weight: 800;
         }
+
+        #roll {
+            width: 400px;
+            height: 80px;
+            font-size: 28px;
+            font-weight: 900;
+            background-color: navajowhite;
+            border-radius: 50px;
+        }
     </style>
     <!-- 
         1. 베팅금 미입력시 경고창 출력, 입력해야만 게임 시작
@@ -75,7 +84,7 @@
                 <div class="dice2"><img class="dices" id="dice__1" src="" alt=""></div>
                 <div class="dice3"><img class="dices" id="dice__2" src="" alt=""></div>
             </div>
-            <button onclick="result();">주사위 굴리기</button>
+            <button id="roll" onclick="result();">주사위 굴리기</button>
         </section>
         <footer class="wrapper wrap__footer">
         </footer>
@@ -98,14 +107,28 @@
             return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             // return inputNumer.toLocalString(); 이거도 됨
         }
-        
+
+        function Dice(num) {
+            this.num = num;
+            this.eye = (select) => { document.querySelector(`#dice__${select}`).setAttribute(`src`, `../images/dice/dice_${this.num}.png`); };
+        }
+
+        let square = [
+            new Dice(1),
+            new Dice(2),
+            new Dice(3),
+            new Dice(4),
+            new Dice(5),
+            new Dice(6)
+        ];
+
         function init() {
             betVal = document.querySelector("#bet").value;
             if (total < betVal) {
                 alert(`베팅은 보유한 금액을 초과할 수 없습니다.`);
                 document.querySelector("#bet").value = null;
                 return;
-            } else if (betVal <= 0 || isNaN(betVal)) {
+            } else if (betVal % 1 != 0 || betVal <= 0 || isNaN(betVal)) {
                 alert(`베팅 금액을 잘못 입력하셨습니다. 베팅 금액은 1 이상의 정수로 적어주세요.`);
                 document.querySelector("#bet").value = null;
                 return;
@@ -115,31 +138,39 @@
         }
 
         function result() {
-            if (total - betVal < 0) {
-                alert(`보유금보다 많은 금액을 배팅할 수 없습니다.`);
-                return;
-            } else {
-                total = total - betVal;
-                myInfo1.innerText = "보유금 : " + numberFormat(total);
-            }
+            let timerSquare = setInterval(() => {
+                square[Math.floor(Math.random() * 6)].eye(0);
+                square[Math.floor(Math.random() * 6)].eye(1);
+                square[Math.floor(Math.random() * 6)].eye(2);
+            }, 25);
+            setTimeout(() => {
+                clearInterval(timerSquare);
+                if (total - betVal < 0) {
+                    alert(`보유금보다 많은 금액을 배팅할 수 없습니다.`);
+                    return;
+                } else {
+                    total = total - betVal;
+                    myInfo1.innerText = "보유금 : " + numberFormat(total);
+                }
 
-            let diceArr = [0, 0, 0];
-            for (let i = 0; i < diceArr.length; i++) {
-                diceArr[i] = parseInt((Math.random() * 6) + 1);
-                document.querySelector("#dice__" + i).setAttribute("src", "../images/dice/dice_" + diceArr[i] + ".png");
-            }
+                let diceArr = [0, 0, 0];
+                for (let i = 0; i < diceArr.length; i++) {
+                    diceArr[i] = parseInt((Math.random() * 6) + 1);
+                    document.querySelector("#dice__" + i).setAttribute("src", "../images/dice/dice_" + diceArr[i] + ".png");
+                }
 
-            if (diceArr[0] == diceArr[1] && diceArr[0] == diceArr[2]) {
-                total += betVal * 10;
-                myInfo1.innerText = "보유금 : " + numberFormat(total);
-                document.querySelector(".wrap__footer").innerText = "잭팟!! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 10) + "칩입니다.";
-            } else if (diceArr[0] == diceArr[1] || diceArr[1] == diceArr[2] || diceArr[0] == diceArr[2]) {
-                total += betVal * 2;
-                myInfo1.innerText = "보유금 : " + numberFormat(total);
-                document.querySelector(".wrap__footer").innerText = "두개 일치~! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 2) + "칩입니다.";
-            } else {
-                document.querySelector(".wrap__footer").innerText = "꽝입니다. 다음에 다시 도전해주세요.";
-            }
+                if (diceArr[0] == diceArr[1] && diceArr[0] == diceArr[2]) {
+                    total += betVal * 10;
+                    myInfo1.innerText = "보유금 : " + numberFormat(total);
+                    document.querySelector(".wrap__footer").innerText = "잭팟!! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 10) + "칩입니다.";
+                } else if (diceArr[0] == diceArr[1] || diceArr[1] == diceArr[2] || diceArr[0] == diceArr[2]) {
+                    total += betVal * 2;
+                    myInfo1.innerText = "보유금 : " + numberFormat(total);
+                    document.querySelector(".wrap__footer").innerText = "두개 일치~! 축하드립니다! 당첨 금액은 " + numberFormat(betVal * 2) + "칩입니다.";
+                } else {
+                    document.querySelector(".wrap__footer").innerText = "꽝입니다. 다음에 다시 도전해주세요.";
+                }
+            }, 1000);
         }
     </script>
 </body>
