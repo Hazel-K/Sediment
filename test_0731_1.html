@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>뭐시기의 서재 어쩌고</title>
+    <title>밀리의 서재</title>
     <style>
         .container {
             width: 500px;
@@ -13,6 +13,7 @@
 
         .hTitle {
             background-color: rgba(91, 250, 242, 0.5);
+            box-sizing: border-box;
             width: inherit;
             height: 100px;
             font-size: 30px;
@@ -20,6 +21,15 @@
             align-items: center;
             padding-left: 40px;
             margin-bottom: 50px;
+        }
+
+        .hWrapper input {
+            width: 200px;
+            height: 30px;
+        }
+
+        .hBtn {
+            height: 30px;
         }
 
         .content {
@@ -56,45 +66,69 @@
 <body>
     <main class="container">
         <header class="hWrapper">
-            <div class="hTitle">뭐시기의 서재 어쩌고</div>
+            <div class="hTitle">Hazel's Library</div>
+            <!-- <input id="input1" type="text" placeholder="책 제목 입력">
+            <input id="input2" type="text" placeholder="저자 입력">
+            <input id="input3" type="text" placeholder="총 페이지 입력">
+            <input id="input4" type="text" placeholder="가격 입력"></br> -->
+            <button class="hBtn" onclick="setCtnt();">새 책 등록</button>
         </header>
         <section class="sWrapper">
-            <div class="content cnt__1">
-                <div>책</div>
-                <div><button>확인</button><button>삭제</button></div>
-            </div>
-            <div class="content cnt__2">
-                <div>책</div>
-                <div><button>확인</button><button>삭제</button></div>
-            </div>
-            <div class="content cnt__3">
-                <div>책</div>
-                <div><button>확인</button><button>삭제</button></div>
-            </div>
         </section>
     </main>
     <script>
+        let bookArr = [];
         function Book(title, author, volume, price) {
             this.title = title;
             this.author = author;
             this.volume = volume;
             this.price = price;
         }
-
         Book.prototype.getInfo = function () {
             return `제목 : ${this.title}, 저자 : ${this.author}, 페이지 : ${this.volume}, 가격 : ${this.price}`;
         }
 
-        let bookArr = [
-            new Book("레미제라블", "김효진", 388, 18000),
-            new Book("노인과 바다", "정유정", 464, 12000),
-            new Book("전쟁과 평화", "석상원", 280, 23000)
-        ];
+        function onLoad() {
+            for (let i = 0; i < bookArr.length; i++) {
+                let temp = document.querySelector(`.sWrapper>div:nth-child(${i + 1})`);
+                temp.setAttribute(`class`, `content cnt__${i + 1}`);
+                document.querySelector(`.cnt__${i + 1} div:nth-child(1)`).innerText = bookArr[i].title;
+                document.querySelector(`.cnt__${i + 1}>div:nth-child(2)>button:nth-child(1)`).setAttribute("onclick", `showInfo(${i})`);
+                document.querySelector(`.cnt__${i + 1}>div:nth-child(2)>button:nth-child(2)`).setAttribute("onclick", `delInfo(${i})`);
+            }
+        }
 
-        // bookArr.forEach(element => {
-        //     document.querySelector().innerHTML = element.title;
-        // });
+        function showInfo(num) {
+            alert(bookArr[num].getInfo());
+        }
 
+        function delInfo(num) {
+            if (confirm(`정말 삭제하시겠습니까?`)) {
+                bookArr.splice(num, 1);
+                document.querySelector(`.cnt__${num + 1}`).remove();
+            }
+        }
+
+        function setCtnt() {
+            let ctnt1 = prompt(`책 제목 입력`);
+            let ctnt2 = prompt(`책 내용 입력`);
+            let ctnt3 = Number(prompt(`페이지 수 입력`));
+            let ctnt4 = Number(prompt(`가격 입력`));
+            let mom = document.querySelector(`.sWrapper`);
+            bookArr.push(new Book(ctnt1, ctnt2, ctnt3, ctnt4));
+
+            mom.appendChild(document.createElement("div"));
+            for (let i = 0; i < 2; i++) {
+                mom.querySelector(`div:nth-child(${bookArr.length})`).appendChild(document.createElement("div"));
+            }
+            for (let i = 0; i < 2; i++) {
+                let temp = ["확인", "삭제"]
+                let temp1 = mom.querySelector(`div:last-child>div:last-child`);
+                let btn = document.createElement("button");
+                temp1.appendChild(btn).innerText = temp[i];
+            }
+            onLoad();
+        }
     </script>
 </body>
 

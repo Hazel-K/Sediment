@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 600px;
+            margin: 30px auto;
+        }
+
+        .container h2 {
+            text-align: center;
+        }
+
+        .container form {
+            background-color: #007acc;
+            padding: 30px 40px;
+        }
+
+        form input {
+            border: none;
+            width: 440px;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+
+        form .addBtn {
+            background-color: white;
+            color: #555;
+            width: 50px;
+            border: none;
+            padding: 11px;
+            font: 1em;
+            box-shadow: 2px 2px 2px black;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #eee;
+            font: 1.1em;
+            transition: 0.2s;
+            padding: 10px 10px 10px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul li:nth-child(odd) {
+            background-color: #eee;
+        }
+
+        ul li:nth-child(even) {
+            background-color: rgb(214, 214, 214);
+        }
+
+        ul li:hover {
+            background-color: lemonchiffon;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h2>여행 준비물 점검 목록</h2>
+        <form action="">
+            <input type="text" id="item"><button id="add" class="addBtn">추가</button>
+        </form>
+        <!-- 
+            폼 태그는 기본적으로 form 안에 내용을 가지고 페이지로 이동하려는 기본 성질을 갖고 있다.
+            그래서 기본적으로 발생하는 이벤트를 막아주어야만 하는데, 이때 사용하는 것이 event.preventDefault()이다.
+         -->
+        <div id="item__list">
+
+        </div>
+    </main>
+    <script>
+        const itemList = document.querySelector(`#item__list`);
+        itemList.append(document.createElement(`ul`));
+        const ul = itemList.querySelector(`ul`);
+        const itemBtn = document.querySelector(`#add`);
+        const item = document.querySelector(`form`);
+        const itemInput = item.querySelector(`input`);
+        const TODO_LS = "toDos";
+        let itemArr = [];
+
+        function delTodo(event) {
+            const btn = event.target;
+            const li = btn.parentNode;
+            ul.removeChild(li);
+            const cleanTodos = itemArr.filter(function(toDo) {
+                return toDo.id !== parseInt(li.id);
+            });
+            itemArr = cleanTodos;
+            saveTodos();
+        }
+
+        function saveTodos() {
+            localStorage.setItem(TODO_LS, JSON.stringify(itemArr)); // ?
+        }
+
+        function addList(text) {
+            const li = document.createElement(`li`);
+            const span = document.createElement(`span`);
+            const delBtn = document.createElement(`button`);
+            const newId = itemArr.length + 1;
+            delBtn.innerText = "❌";
+            delBtn.addEventListener("click", delTodo);
+            span.innerText = text;
+            li.append(span);
+            li.append(delBtn);
+            li.id = newId;
+            ul.append(li);
+            const todoObj = {
+                text: text,
+                id: newId
+            };
+            itemArr.push(todoObj);
+            saveTodos();
+        }
+
+        function loadList() {
+            const loadedItem = localStorage.getItem(TODO_LS);
+            if (loadedItem != null) {
+                const parsedItem = JSON.parse(loadedItem);
+                parsedItem.forEach(function (todo) {
+                    addList(todo.text);
+                });
+            }
+        }
+
+        function submitList(event) {
+            event.preventDefault();
+            const currntVal = itemInput.value;
+            addList(currntVal);
+            itemInput.value = "";
+        }
+
+        function init() {
+            itemBtn.addEventListener("click", submitList);
+            loadList();
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

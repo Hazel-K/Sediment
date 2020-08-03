@@ -86,6 +86,18 @@
     screen.availHeight; 상태 표시줄을 제외한 높이값 반환
     screen.colorDepth; 사용자의 모니터가 표현 가능한 컬러 bit를 반환
 
+<WINDOW FUNCTION>
+    window.open(); 해당 윈도우 창을 연다(문법 참고 : https://offbyone.tistory.com/312)
+    window.close(); 해당 윈도우 창을 닫는다
+
+<LOCALSTORAGE FUNCTION>
+    localstorage.getItem(String); String에 해당하는 저장소의 요소를 가져온다.
+    localstorage.setItem(String, Object); String에 해당하는 이름으로 Object들을 저장한다.
+
+<JSON FUNCTION>
+    JSON.parse(Object); 해당 JSON객체를 JS 객체로 변환한다.
+    JSON.stringify(Array); 해당 Array, Object에 있는 값을 JSON객체로 변형한다.
+
 <ARRAY FUNCTION>
     Array.join(anyLetter); 해당 배열 인덱스 사이사이에 anyLetter를 삽입하여 출력 <return type: String>
     Array.concat(Array2); Array에 Array2를 붙임 <return type: void>
@@ -98,6 +110,7 @@
     Array.sort(); Array의 value를 오름차순 으로 변환 <return type: void>
     Array.reverse(); Array의 index를 뒤집음 <return type: void>
     Array.legnth Array의 길이 반환 <return type: Number>
+    Array.filter(function); function을 수행하여 조건에 맞는 것들을 모아 새로운 Array로 반환
 
 <DOCUMENT FUNCTION>
     document.querySelector("Selector"); 선택자를 통해 Element 지정 <return type: element>
@@ -111,6 +124,7 @@
     document.appendChild(`tagName`); 해당 element에 자식 tagName을 생성 <return type: element>
     document.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
     document.setAttribute("attName", "attValue"); 해당 element의 attName에 해당하는 attValue를 지정
+    document.addEventListener("event", function); 해당 element에 event 시 function을 호출(이벤트 참고 : https://abc1211.tistory.com/201)
 
 <FIELD SETTING>
     let or var = n; 변수 설정
