@@ -56,12 +56,13 @@
 
 <LOCATION FUNCTION>
     location.reload(); 브라우저를 새로 고침 <return type: void>
-    location.href; 참조 주소 반환
+    location.href = ""; 참조 주소 반환
     location.hash; 해시값(#)을 반환
     location.hostname; 호스트 이름 설정 혹은 반환
     location.host; 호스트 이름과 포트 번호 반환
     location.protocol; 프로토콜 반환
     location.search; 쿼리를 반환
+    location.assign('href'); 해당 href로 이동
 
 <HISTORY FUNCTION>
     history.back(); 이전 방문 사이트
