@@ -14,6 +14,10 @@
     clearInterval(); setInterval 함수 초기화
     setTimeout(Value, n); n밀리초를 초과하면 Value 실행
     clearTimeout(); setTimeout 함수 초기화
+    input~checkbox+radioboxName.checked; 타입이 chkbox,radio이 체크되었는지를 확인 <return type: boolean>
+    forms[checkbox.checked].value; form 태그 안에 같은 Name으로 묶인 체크박스에서 체크된 value를 반환
+    select~option.selectedIndex; 타입이 select인 것 중 선택된 option을 확인 <return type: boolean>
+    select.options[selectedIndex].value; 옵션 중 선택된 option에 해당하는 value를 반환
 
 <TEXT FUNCTION>
     text.charAt(n); text n번째에 해당하는 문자 반환 <return type: String>
@@ -126,6 +130,11 @@
     document.style.METHOD = ""; 해당 element에 METHOD에 해당하는 style을 적용
     document.setAttribute("attName", "attValue"); 해당 element의 attName에 해당하는 attValue를 지정
     document.addEventListener("event", function); 해당 element에 event 시 function을 호출(이벤트 참고 : https://abc1211.tistory.com/201)
+    document.firstChild.; 해당 element의 첫 번째 자식을 선택하여 반환
+    document.lastChild.; 해당 element의 마지막 자식을 선택하여 반환
+    document.previousSibling.; 해당 element 이전의 형제를 선택하여 반환, 없으면 null 반환
+    document.nextSibling.; 해당 element 의 다음 형제를 선택하여 반환, 없으면 null 반환
+    document.childNodes[n].; 해당 element의 n번째 자식 노드를 선택하여 반환
 
 <FIELD SETTING>
     let or var = n; 변수 설정
