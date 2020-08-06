@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* layout.css */
+        body,
+        div,
+        span,
+        input,
+        form,
+        fieldset,
+        main,
+        header,
+        section,
+        aside,
+        footer {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bgTag {
+            position: absolute;
+            width: 100%;
+            height: 80vh;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        .hWrapper {
+            margin: 0 auto;
+            width: 83%;
+            min-width: 663px;
+            height: 40vh;
+            background-color: rgb(189, 255, 243);
+        }
+
+        .sWrapper {
+            width: 83%;
+            margin: 30px auto 80px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .arWrapper {
+            width: 76%;
+            min-width: 450px;
+            margin-right: 2%;
+            height: 80vh;
+            background-color: indianred;
+        }
+
+        .asWrapper {
+            width: 24%;
+            min-width: 200px;
+            height: 80vh;
+            background-color: gray;
+        }
+
+        .fWrapper {
+            margin: 0 auto;
+            width: 100%;
+            min-width: 663px;
+            height: 15vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-weight: 800;
+        }
+        /* layout.css */
+    </style>
+</head>
+
+<body>
+    <div id="bgTag"></div>
+    <main class="container">
+        <header class="hWrapper">
+            머리
+        </header>
+        <section class="sWrapper">
+            <article class="arWrapper">
+                내용
+            </article>
+            <aside class="asWrapper">
+                광고용
+            </aside>
+        </section>
+        <footer class="fWrapper">
+            회사
+        </footer>
+    </main>
+    <script>
+
+    </script>
+</body>
+
+</html>
