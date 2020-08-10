@@ -135,6 +135,8 @@
     document.previousSibling.; 해당 element 이전의 형제를 선택하여 반환, 없으면 null 반환
     document.nextSibling.; 해당 element 의 다음 형제를 선택하여 반환, 없으면 null 반환
     document.childNodes[n].; 해당 element의 n번째 자식 노드를 선택하여 반환
+    document.classList.add("Name"); 해당 element에 Name을 class로 추가.
+    document.classList.toggle("Name"); 해당 element에 Name을 class로 추가, 클릭 시 추가/삭제를 반복.
 
 <FIELD SETTING>
     let or var = n; 변수 설정
