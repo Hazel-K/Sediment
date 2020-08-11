@@ -12,7 +12,6 @@
     $('Selector').gt(index); 해당 Selector 요소의 index보다 큰 자식들을 선택 $('Selector element:gt(index)'); 형태로도 사용 가능
     $('Selector:first-of-type'); 해당 Selector 요소 중 첫 번째 요소를 선택 <> last-of-type, (n)추가 시 시작, 끝에서 n번째 요소 선택
     $('Selector:nth-child(n)'); 해당 Selector 요소 중 n번째 요소를 선택, 3n, 2n+1 등등의 연산식 활용이 가능
-    $('Selector').addClass('Name'); 해당 Selector 요소에 Name을 class로 추가
     $('Selector:contains(text)'); 해당 Selector 요소에 text가 포함된 것을 선택
     $('Selector:has(Attribute)'); 해당 Selector 요소에 Attribute 요소가 포함된 것을 선택
     $('Selector').not('Selector2'); 해당 Selector 요소 중 Selector2가 아닌 요소를 선택
@@ -20,7 +19,23 @@
     $('Selector').contents().EX; 해당 Selector 요소 중 EX에 해당하는 조건을 가진 요소와 Selector를 선택 EX) eq(),lt(),gt(),find(),filter() 등
     $('Selector').find('Selector2'); 해당 Selector 의 하위 요소 중 Selector2인 요소를 선택
     $('Selector').filter('Selector2'); 해당 Selector 요소 중 Selector2인 요소를 선택
-    $('Selector').is(':Attribute'); 해당 Seleoctor 요소가 해당 Attribute속성을 갖고 있는지 확인 <retrun type: boolean>
+    $('Selector').is(':Attribute'); 해당 Selector 요소가 해당 Attribute속성을 갖고 있는지 확인 <retrun type: boolean>
+    $('Selector').on("event", function() {}); 해당 Selector 요소에 event 행동 수행 시 function 실행, off()로 종료
+    $('Selector').event(functionName); 해당 Selector 요소에 event 행동 수행 시 functionName 실행, event 종류는 따로 참고
+    $('Selector').clone().insertAfter(Selector2); 해당 Selector 요소를 복사한 후 Selector2 다음 위치에 삽입
+    $('Selector').val(); 해당 Selector 요소의 값을 반환
+    $('Selector').prop(); 해당 Selector 요소의 JS property 값을 반환 ("defaultValue") 사용 시 selector의 기본 값을 반환
+    $('Selector').addClass('Name'); 해당 Selector 요소에 Name을 class로 추가
+    $('Selector').removeClass('Name'); 해당 Selector 요소에 class Name을 삭제
+    $('Selector').toggleClass('Name'); 해당 Selector 요소에 클릭시 삭제/생성을 반복하는 class Name을 추가
+    $('Selector').hasClass('Name'); 해당 Selector 요소에 class Name이 있는지를 확인 <retrun type: boolean>
+    $('Selector').width(); value를 감싼 경계를 반환 및 수정, height();
+    $('Selector').innerwidth(); value + padding의 너비를 반환 및 수정, innerHeight()
+    $('Selector').outerwidth(); value + padding + border + margin의 너비를 반환 및 수정, outerHeight()
+    $('Selector').position().left|top|right|bottom; 해당 요소의 포지션 위치값을 반환
+    $('Selector').offset().left|top|right|bottom; 해당 요소가 수평, 수직으로 얼마나 떨어져있는지를 반환
+    $(window).scrollLeft(); 창의 수평 스크롤 이동 너비 값 반환
+    $(window).scrollTop(); 창의 수직 스크롤 이동 높이 값 반환
 
 <ARRAY FUNCTION>
     $.each(array, function(){index, item}); foreach문의 jquery형태, function을 통해 실행, item.Name 등으로 값 출력 가능
