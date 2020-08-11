@@ -38,7 +38,7 @@
     Math.abs(n) n의 절대값
     Math.max(n1, n2...) 최대값
     Math.min(n1, n2...) 최소값
-    Math.random 0 ~ 0.9... 사이의 난수 반환
+    Math.random() 0 ~ 0.9... 사이의 난수 반환
     Math.pow(n1, n2) n1의 n2제곱값 반환
     Math.round(n) 반올림
     Math.floor(n) 버림
