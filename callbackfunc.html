@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var fnSum = function(...args) {
+            let total = 0;
+            for(let i = 0; i < args.length; i++) {
+                total += args[i];
+            }
+            return total;
+        }
+        
+        var fnmul = function(...args) {
+            let total = 1;
+            for(let i = 0; i < args.length; i++) {
+                total *= args[i];
+            }
+            return total;
+        }
+
+        function doCalc(fn) {
+            // A
+            var a1 = 10
+            var a2 = 20
+            // B
+            var res = fn(a1, a2)
+            // C
+            console.log('res : ' + res)
+        }
+
+        doCalc(fnSum); // 함수를 인자로 받아 각각의 결과를 도출
+        doCalc(fnmul); // 함수를 인자로 받아 각각의 결과를 도출
+    </script>
+</body>
+
+</html>
