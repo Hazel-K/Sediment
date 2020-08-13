@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
     <script src="https://kit.fontawesome.com/8970b8107d.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"/>
     <style>
@@ -170,8 +170,13 @@
         this.price = price;
       }
       Book.prototype.getInfo = function () {
-        alert(`제목 : ${this.title}\n저자 : ${this.author}\n페이지 : ${this.volume}\n가격 : ${this.price}원`);
+        alert(`제목 : ${this.title}\n저자 : ${this.author}\n페이지 : ${this.volume}p\n가격 : ${numberFormat(this.price)}원`);
       };
+
+      function numberFormat(inputNumber) {
+        return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // return inputNumer.toLocalString(); 이거도 됨
+      }
 
       function delItem() {
         let mainWrap = document.querySelector(".mainWrap");
@@ -238,7 +243,7 @@
             }
           }
           if (arrValue[i] == "") {
-            alert(`${iptArr[i]}을/를 입력해주세요`);
+            alert(`${iptArr[i]}을(를) 입력해주세요`);
             document.querySelector(`#ipt${i + 1}`).focus();
             return;
           }
