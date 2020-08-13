@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function show(item) {
+        //     console.log(item);
+        // }
+
+        // function fn1(item) {
+        //     console.log('B:' + item);
+        // }
+
+        // function foreach(arr, fn) {
+        //     for(let i=0; i<arr.length; i++) {
+        //         var item = arr[i];
+        //         fn(item);
+        //     }
+        // }
+
+        // var arr= [1,2,3]
+        // foreach(arr, fn1);
+
+        Array.prototype.arr = [];
+        Array.prototype.filter2 = function(fn){
+            let temp = [];
+            for(let i = 0; i < this.arr.length; i++) {
+                let item = this.arr[i];
+                if (fn(item)) {
+                    temp.push(item);
+                }
+            }
+            return temp;
+        }
+
+        let arr1 = [];
+        arr1.arr = ['a', 'b', 'c'];
+        let arr2 = arr1.filter2(function(item) {
+            return item == 'a';
+        })
+
+        console.log(arr2);
+    </script>
+</body>
+</html>

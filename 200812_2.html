@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .lbl__adt:first-child{
+        .lbl__adt:first-child {
             margin-right: 20px;
+        }
+        .selected{
+            border: 1px solid gainsboro;
+            color: gray;
         }
     </style>
 </head>
+
 <body>
     <div id="memberContainer"></div>
     <div id="seatsContainer"></div>
     <script>
         function makeSelect(_title, _selectId) {
-            var label_adt = document.createElement('label');
+            let label_adt = document.createElement('label');
             label_adt.classList.add('lbl__adt');
-            var span_adt = document.createElement('span');
+            let span_adt = document.createElement('span');
             span_adt.innerText = `${_title} : `;
-            var select_adt = document.createElement('select');
+            let select_adt = document.createElement('select');
             select_adt.id = _selectId;
 
-            for(var i=0; i<=5; i++) {
-                var opt = document.createElement('option');
+            for (let i = 0; i <= 5; i++) {
+                let opt = document.createElement('option');
                 opt.value = i;
                 opt.innerText = i;
                 select_adt.append(opt);
@@ -35,14 +41,38 @@
             return label_adt;
         }
 
+        function makeSeatBtns(arr, colCnt) {
+            let totalDiv = document.createElement('div');
+            for (let i = 0; i < arr.length; i++) {
+                let makeDiv = document.createElement('div');
+                let startSpell = arr[i];
+                for (let j = 1; j <= colCnt; j++) {
+                    let btn = document.createElement('button');
+                    btn.addEventListener("click", ()=>{
+                        btn.classList.toggle('selected');
+                    })
+                    btn.style.padding = '5px 15px';
+                    btn.innerText = `${startSpell}${j}`;
+                    makeDiv.append(btn);
+                }
+                totalDiv.append(makeDiv);
+            }
+            return totalDiv;
+        }
+
         function init() {
-            var sel_adt = makeSelect('성인', 'sel_adt_member_cnt');
-            var sel_ten = makeSelect('청소년', 'sel_ten_member_cnt');
+            let sel_adt = makeSelect('성인', 'sel_adt_member_cnt');
+            let sel_ten = makeSelect('청소년', 'sel_ten_member_cnt');
             memberContainer.append(sel_adt);
             memberContainer.append(sel_ten);
+
+            let arr = ['A', 'B', 'C'];
+            let seat_btns = makeSeatBtns(arr, 5);
+            seatsContainer.append(seat_btns);
         }
 
         init();
     </script>
 </body>
+
 </html>
