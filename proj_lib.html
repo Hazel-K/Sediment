@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://kit.fontawesome.com/8970b8107d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-decoration: none;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.1em;
+        }
+
+        #bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 15vh;
+            background-color: lightcoral;
+            z-index: -1;
+        }
+
+        .nav__main {
+            height: 15vh;
+            display: flex;
+            /* align-items: flex-end; */
+            justify-content: space-between;
+            color: whitesmoke;
+        }
+
+        .nav__main>li {
+            padding: 0.5em 1.3em;
+        }
+
+        .nav__main>li:first-child {
+            align-self: center;
+        }
+
+        .nav__main>li:last-child {
+            align-self: flex-end;
+        }
+
+        .list__logo {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .list__logo>.logos {
+            padding: 0 0.3em;
+        }
+
+        .menus:hover {
+            text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+            cursor: pointer;
+        }
+
+        .insBook {
+            display: none;
+        }
+
+        .SHOW_ON {
+            display: block;
+        }
+
+        #bg2 {
+            color: whitesmoke;
+            height: 15vh;
+            background-color: lightcoral;
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas:
+                ". ipt1 ipt2 ."
+                ". ipt3 ipt4 ."
+                ". . insBook ."
+            ;
+        }
+
+        input {
+            padding-left: 10px;
+            color: rgb(6, 23, 41);
+        }
+
+        #ipt1 {
+            grid-area: ipt1;
+        }
+
+        #ipt2 {
+            grid-area: ipt2;
+        }
+
+        #ipt3 {
+            grid-area: ipt3;
+        }
+
+        #ipt4 {
+            grid-area: ipt4;
+        }
+
+        #insBook {
+            grid-area: insBook;
+            justify-self: flex-end;
+            align-self: center;
+        }
+
+        .ctnt {
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ctnt:nth-child(odd) {
+            background-color: navajowhite;
+        }
+
+        .ctnt:nth-child(even) {
+            background-color: rgb(224, 183, 120);
+        }
+
+        .ctnt__title {
+            margin-left: 50px;
+            color: rgb(6, 23, 41);
+        }
+        .ctnt__list {
+            display: flex;
+            color: whitesmoke;
+            text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+        }
+        .items {
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="bg"></section>
+    <nav class="nav__bar">
+        <ul class="nav__main">
+            <li class="nav__list">
+                <ul class="list__logo">
+                    <li class="logos"><i class="fas fa-swatchbook fa-2x"></i></li>
+                    <li class="logos">도서 목록 관리 프로그램</li>
+                </ul>
+            </li>
+            <li class="nav__list">
+                <ul class="list__menu">
+                    <li class="menus" id="subBook">책 등록하기</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <section class="insBook"></section>
+    <ul class="mainWrap"></ul>
+    <script>
+        var BookList = [];
+
+        function Book(title, author, volume, price) {
+            this.title = title;
+            this.author = author;
+            this.volume = volume;
+            this.price = price;
+        }
+
+        function onLoad() {
+            let mainWrap = document.querySelector('.mainWrap');
+            BookList.forEach(function(item) {
+                let makeLi = document.createElement("li");
+                makeLi.id = BookList.length + 1;
+                mainWrap.append(makeLi);
+            });
+        }
+
+        function insertBook() {
+            const iptArr = ["책이름", "저자", "페이지 수", "가격"];
+            let arrValue = new Array(4);
+            for (let i = 0; i < arrValue.length; i++) {
+                arrValue[i] = document.querySelector(`#ipt${i + 1}`).value;
+                if (i > 1) {
+                    if (isNaN(arrValue[i]) || arrValue[i] % 1 != 0 || arrValue[i] < 0) {
+                        alert(`${iptArr[i]}에 올바른 숫자를 입력해주세요.`);
+                        document.querySelector(`#ipt${i + 1}`).focus();
+                        return;
+                    }
+                }
+                if (arrValue[i] == "") {
+                    alert(`${iptArr[i]}을/를 입력해주세요`);
+                    document.querySelector(`#ipt${i + 1}`).focus();
+                    return;
+                }
+            }
+
+            const book = new Book(iptArr[0], iptArr[1], iptArr[2], iptArr[3]);
+            BookList.push(book);
+            onLoad();
+        }
+
+        function makeInsBook() {
+            let insBook = document.querySelector('.insBook');
+            insBook.append(document.createElement('div'));
+            let div = document.querySelector('.insBook>div');
+            div.id = "bg2";
+            for (let i = 1; i <= 4; i++) {
+                let iptArr = ["책이름", "저자", "페이지 수", "가격"];
+                let makeIpt = div.append(document.createElement('input'));
+                let ipt = div.querySelector(`input:nth-child(${i})`);
+                ipt.id = `ipt${i}`;
+                ipt.placeholder = iptArr[i - 1];
+            }
+            div.append(document.createElement('div'));
+            let submit = div.querySelector('div:last-child');
+            submit.id = "insBook";
+            submit.className = "menus";
+            submit.innerText = "등록하기";
+            submit.addEventListener("click", insertBook);
+        }
+
+        function init() {
+            makeInsBook();
+            const SUBBOOK = document.querySelector('#subBook');
+            SUBBOOK.addEventListener("click", () => {
+                let chk = document.querySelector('.insBook');
+                chk.classList.toggle('SHOW_ON');
+            });
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
