@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #seatsContainer {
+            width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        #seatsContainer>div:first-child>div {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            grid-gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .lbl__adt:first-child {
+            margin-right: 20px;
+        }
+
+        .selected {
+            border: 1px solid gainsboro;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden3" id="allSeatCnt">
+    <div id="memberContainer"></div>
+    <div id="seatsContainer"></div>
+    <script>
+        let selectedSeats = [];
+
+        function switchSeat(seat) {
+            let idx = selectedSeats.indexOf(seat);
+            if(idx == -1) { // 기존에 선택이 안 되어 있었다.
+                selectedSeats.push(seat);
+            } else { // 기존에 선택되어 있었다.
+                selectedSeats.splice(idx, 1);
+            }
+            console.log('selectedSeat : ' + selectedSeats);
+        }
+
+        function updSeatCnt() {
+            allSeatCnt.value = parseInt(sel_adt_member_cnt.value) + parseInt(sel_ten_member_cnt.value);
+        }
+
+        function makeSelect(_title, _selectId) {
+            let label_adt = document.createElement('label');
+            label_adt.classList.add('lbl__adt');
+            let span_adt = document.createElement('span');
+            span_adt.innerText = `${_title} : `;
+            let select_adt = document.createElement('select');
+            select_adt.id = _selectId;
+            select_adt.addEventListener("change", updSeatCnt);
+
+            for (let i = 0; i <= 5; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = i;
+                select_adt.append(opt);
+            }
+
+            label_adt.append(span_adt);
+            label_adt.append(select_adt);
+
+            return label_adt;
+        }
+
+        function makeSeatBtns(arr, colCnt) {
+            let totalDiv = document.createElement('div');
+            for (let i = 0; i < arr.length; i++) {
+                let makeDiv = document.createElement('div');
+                let startSpell = arr[i];
+                for (let j = 1; j <= colCnt; j++) {
+                    let btn = document.createElement('button');
+                    btn.addEventListener("click", ()=>{
+                        btn.classList.toggle('selected');
+                        switchSeat(`${startSpell}${j}`);
+                    });
+                    btn.style.padding = '5px 15px';
+                    btn.innerText = `${startSpell}${j}`;
+                    makeDiv.append(btn);
+                }
+                totalDiv.append(makeDiv);
+            }
+            return totalDiv;
+        }
+
+        function init() {
+            let sel_adt = makeSelect('성인', 'sel_adt_member_cnt');
+            let sel_ten = makeSelect('청소년', 'sel_ten_member_cnt');
+            memberContainer.append(sel_adt);
+            memberContainer.append(sel_ten);
+
+            let arr = ['A', 'B', 'C'];
+            let seat_btns = makeSeatBtns(arr, 5);
+            seatsContainer.append(seat_btns);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

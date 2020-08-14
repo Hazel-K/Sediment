@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.arr = [];
+        Array.prototype.filter2 = function(fn) {
+            let temp = [];
+            for(let i = 0; i < this.arr.length; i++) {
+                let item = this.arr[i];
+                if (fn(item)) {
+                    temp.push(item);
+                }
+            }
+            return temp;
+        }
+
+        let originArr = [3,5,8,10,23];
+        let result = originArr.filter(function(item) {
+            if(item % 2 == 0) {
+                return true;
+            }
+        })
+        console.log(result);
+
+        let myArr = Array();
+        myArr.arr = [3,5,8,10,23];
+        result = myArr.filter2(function(item) {
+            if(item % 2 == 0) {
+                return true;
+            }
+        })
+        console.log(result);
+    </script>
+</body>
+</html>
