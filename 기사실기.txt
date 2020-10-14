@@ -668,7 +668,7 @@
         *Public, 전체 허용
         *Protected, 자신 및 상속된 자식클래스 허용
         *Private, 자신만 허용
-        *Package, 자신 및 자신을 포함한 패키지 허용
+        *Default, 자신 및 자신을 포함한 패키지 허용
     </클래스의 허용 범위>
 
     *DNS_Domain Name System, 숫자로 된 IP 주소를 사람이 이해하기 쉽게 바꾼 형태
