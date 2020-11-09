@@ -36,28 +36,31 @@
         let bb = b();
 
         return new Promise(function(resolve, reject) {
-          setTimeout(function() {
+          setTimeout(function () {
             resolve(aa);
             reject(bb);
           }, 2000);
         });
       }
-      
-      function method2_1(val) {
-        setTimeout(function() {
-          return val + 10;
-        }, 1000)
+
+      function promise2(val) {
+        return new Promise(function(resolve) {
+          setTimeout(function () {
+            resolve(val + 10);
+          }, 1000);
+        });
       }
 
       // try,catch,finally와 같은 구조의 promise
-      var a = promise1();
-      a.then(function(data) {
-        console.log(data);
-      }).catch(function(err) {
-        console.log(err);
-      }).then(function() {
-        console.log('fanally');
-      });
+      // async 함수는 await만 들어갈 수 있음
+      async function printProm() {
+        let a = await promise1();
+        console.log('a:' + a);
+        let b = await promise2(a);
+        console.log('b:' + b);
+      }
+
+      printProm();
     </script>
   </body>
 </html>
