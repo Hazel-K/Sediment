@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      function method1() {
+        setTimeout(function() {
+            console.log('method1');
+          }, 2000)
+      }
+      function method2() {
+          setTimeout(function() {
+            console.log('method2');
+          }, 1000)
+      }
+
+      method1();
+      method2();
+      console.log('haha');
+    </script> -->
+    <script>
+      function a() {
+        return 10;
+      }
+
+      function b() {
+        return 15;
+      }
+
+      function promise1() {
+        let aa = a();
+        let bb = b();
+
+        return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(aa);
+            reject(bb);
+          }, 2000);
+        });
+      }
+      
+      function method2_1(val) {
+        setTimeout(function() {
+          return val + 10;
+        }, 1000)
+      }
+
+      // try,catch,finally와 같은 구조의 promise
+      var a = promise1();
+      a.then(function(data) {
+        console.log(data);
+      }).catch(function(err) {
+        console.log(err);
+      }).then(function() {
+        console.log('fanally');
+      });
+    </script>
+  </body>
+</html>
