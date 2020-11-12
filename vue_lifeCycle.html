@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      // vue는 flex와 비슷해서 한 부모 내 자식들 객체를 관리하는 용도로 주로 사용
+      var vue1 = new Vue({
+        el: "#app",
+        data: {},
+        beforeCreate() {
+          console.log('--- beforeCreate')
+        },
+        created() {
+          console.log('--- created')
+        },
+        beforeMount() {
+          console.log('--- beforeMount')
+        },
+        mounted() {
+          console.log('--- mounted')
+        },
+        beforeUpdate() {
+          console.log('--- beforeUpdate')
+        },
+        updated() {
+          console.log('--- updated')
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
